@@ -1,0 +1,1358 @@
+[
+  {
+    "id": "07f650d3-a6a8-46db-8ad9-71fb4dd1c832",
+    "n": "Generador trifásico insonoro",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "470899c7-49f3-41f2-afb3-b6c6b70834db",
+    "n": "MacBook Pro",
+    "c": 1
+  },
+  {
+    "id": "506fcd9b-a972-475e-847a-93e8dd105a73",
+    "n": "Notebook",
+    "c": 1
+  },
+  {
+    "id": "3900e57f-e7be-4587-8dec-664a9aa94a14",
+    "n": "MacBook Pro",
+    "c": 1
+  },
+  {
+    "id": "546d6e99-81c5-4ff2-ba4f-bdbcbecddc80",
+    "n": "Cajón soquete guirnalda 50 m",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "be3b5da3-bb73-464e-9716-1d6505b0f5ea",
+    "n": "Sillas",
+    "c": 240,
+    "is": false
+  },
+  {
+    "id": "681319f7-33f3-4f8c-9646-2a9860e1c83b",
+    "n": "Tubos LED blancos",
+    "c": 14,
+    "is": false
+  },
+  {
+    "id": "2a674ebe-95c0-4a90-b8e0-43b5e3647f77",
+    "n": "Tubos LED amarillos",
+    "c": 20,
+    "is": false
+  },
+  {
+    "id": "ff9697e8-6596-445f-bf2d-0ce72da3a96f",
+    "n": "Tubos LED azules",
+    "c": 18,
+    "is": false
+  },
+  {
+    "id": "31b9a897-9802-41ca-9c6f-e16410c30556",
+    "n": "Tubos LED verdes",
+    "c": 17,
+    "is": false
+  },
+  {
+    "id": "80f405bc-c36a-41d9-9717-8bf2fa92db2c",
+    "n": "Tubos LED rojos",
+    "c": 17,
+    "is": false
+  },
+  {
+    "id": "1f76b519-dad3-4623-ae88-1464ef749c05",
+    "n": "Tachos aluminio",
+    "c": 15,
+    "is": false
+  },
+  {
+    "id": "7a0ce31f-32c8-40d2-a819-c1b57770bc5a",
+    "n": "COB",
+    "c": 8,
+    "is": false
+  },
+  {
+    "id": "422f8a75-8c65-47a4-bfd0-6242ad919eb0",
+    "n": "Bola disco",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "e27b2e7d-0316-46b2-8a2e-4342edef5700",
+    "n": "Máquina de chispas",
+    "c": 4,
+    "is": false
+  },
+  {
+    "id": "afd2cf17-715e-4aee-b615-6940e3cc22ff",
+    "n": "Módulo",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "ffacbb80-f1fb-4bc2-8660-efadc3885c51",
+    "n": "Máquina láser Glowing L108B",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "f221cb38-55df-42b3-a2d8-4cb116ea3eed",
+    "n": "Luz LED Full Light 8+8 White Strobe",
+    "c": 8,
+    "is": false
+  },
+  {
+    "id": "d073e021-fd12-445d-828d-a62befb0d2c4",
+    "n": "Máquina de humo genérica",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "7a3c8b2d-6c00-401a-809a-91408461ef4b",
+    "n": "Alfombra persa",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "15666b4a-b01f-4175-aac4-b5ef67060aa7",
+    "n": "Titiritero",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "d2149bad-e5a4-43ce-8b44-b5d99534f504",
+    "n": "Candelabro",
+    "c": 3,
+    "is": false
+  },
+  {
+    "id": "c0e210b1-58ae-4198-b191-0975b1511dc7",
+    "n": "Case de teclado",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "21f2daf6-40cd-47a9-9097-24c007da5a6c",
+    "n": "Candelabro gótico cristal",
+    "c": 3,
+    "is": false
+  },
+  {
+    "id": "f520fe4c-302d-4148-9f37-f193fdc56f67",
+    "n": "Pantalla tipo barroco",
+    "c": 13,
+    "is": false
+  },
+  {
+    "id": "85ac521d-3ab4-489f-9827-fdf177fcb566",
+    "n": "Máquina de humo B400",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "5dc8b594-f4e7-42e4-bc96-258c4657015b",
+    "n": "Alfombra roja lisa",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "57a97974-e81b-4c4c-9c76-47a3850f6e4e",
+    "n": "Ampolletas LED",
+    "c": 22,
+    "is": false
+  },
+  {
+    "id": "69f1b0a0-a256-44ed-982a-28fdd7c965ca",
+    "n": "Alargador 50 m",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "c894d7f9-bd7b-4ea6-866f-aea5dd50f781",
+    "n": "Atril director",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "6d39ba8e-edba-445e-9b07-3c2d94f6517e",
+    "n": "Truss pequeños",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "5d60943c-51de-4437-9b08-fe222a612768",
+    "n": "Estufas",
+    "c": 3,
+    "is": false
+  },
+  {
+    "id": "fc1d72e4-276b-4ebc-80fe-22a35a62410d",
+    "n": "AMK foco frontal",
+    "c": 4,
+    "is": false
+  },
+  {
+    "id": "c2e1ab0c-c27c-473d-adeb-0c71d2b50889",
+    "n": "Tubos LED rosados",
+    "c": 17,
+    "is": false
+  },
+  {
+    "id": "825a70f8-66ba-45a9-b838-148021a81f3c",
+    "n": "Ventiladores",
+    "c": 6,
+    "is": false
+  },
+  {
+    "id": "2d7ad4b2-da32-4727-a814-d33793b41e8a",
+    "n": "COXX CT-02 (Test de cables)",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "0dbebe9c-ff31-4ccb-b3ca-530da32cd2e0",
+    "n": "Tableros eléctricos",
+    "c": 3,
+    "is": false
+  },
+  {
+    "id": "516c4515-042f-4633-988c-1081ab24be1a",
+    "n": "Case de chucos",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "5be84774-56d0-46c8-a8a0-d015a1997e00",
+    "n": "Alargador",
+    "c": 6,
+    "is": false
+  },
+  {
+    "id": "14bf579b-3f60-4f4f-a493-3d48c612f7ef",
+    "n": "Alargador",
+    "c": 14,
+    "is": false
+  },
+  {
+    "id": "58fc7a20-2f49-4a2a-b72b-27492a4d1592",
+    "n": "Alargador",
+    "c": 5,
+    "is": false
+  },
+  {
+    "id": "6c69e492-9fb7-484c-9c53-19c26997dedb",
+    "n": "Triple eléctrico",
+    "c": 21,
+    "is": false
+  },
+  {
+    "id": "2e464d7f-5018-4723-807c-b07b3e6a74a9",
+    "n": "Alargador tipo zapatilla",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "81757dfd-de56-4331-a20d-98bc0a9cf2d3",
+    "n": "Alargador tipo zapatilla",
+    "c": 8,
+    "is": false
+  },
+  {
+    "id": "25bf09be-52e6-4b0f-8e54-309a91269747",
+    "n": "Alargador tipo zapatilla",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "8b87a660-b626-4495-9b41-0eb81dcdc119",
+    "n": "Alargador",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "0da25974-ef9c-4dc6-84ce-ba27cd068791",
+    "n": "Alargador",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "44c2bc74-92d1-4816-b7dd-2514481dc373",
+    "n": "Case de corriente",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "8ff4d20b-9704-4107-bdae-42543112206e",
+    "n": "Alargador",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "be58d1e0-d6f9-4f4f-995e-6107dcce9a55",
+    "n": "Máquina humo LED WildPro",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "6a86e60d-826f-42a9-b175-e9444e65bba1",
+    "n": "Pad LED metálicos LPC006",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "9ec50f3e-753e-44b2-82bf-35524091436a",
+    "n": "Bumper delgado",
+    "c": 3,
+    "is": false
+  },
+  {
+    "id": "b1ca877c-1753-408b-83e5-523301b6bf6c",
+    "n": "Bumper ancho",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "7e3a85f0-1da0-4f50-85d5-c97edcafdc51",
+    "n": "Procesadores video LED VLP",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "fe1b72b4-671b-4e7f-9d2f-2cacb2cb24d0",
+    "n": "Case pantalla LED Novastar",
+    "c": 4,
+    "is": true
+  },
+  {
+    "id": "1d165926-c0fe-4c5b-a553-2fd51df1041b",
+    "n": "Case Pad LED plástico ZF10142",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "fe979ce1-4be1-42db-8c12-f34d927d77b3",
+    "n": "Láser Glowing L108B",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "1a1739a1-f613-485e-b738-58c766ad93b3",
+    "n": "Máquina de humo MLB X600",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "c21020b6-3355-4656-b33a-d673b84fcd85",
+    "n": "Chispas frías nuevas",
+    "c": 4,
+    "is": false
+  },
+  {
+    "id": "5fa5c818-f7a4-4ebb-9c3e-cc873aa44f73",
+    "n": "Máquina chispas frías Lux-Spark",
+    "c": 2,
+    "is": true
+  },
+  {
+    "id": "78741f6f-3853-471f-8038-2403277383b6",
+    "n": "Case focos fluor genéricos",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "0db9313b-930a-48bc-ae18-beed2de71fa8",
+    "n": "Case focos metálicos pequeños ATV Lights",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "bc831287-586f-4dee-85f8-e37a50ed2604",
+    "n": "Mini Brut 200W Eastman",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "6412e9aa-376e-4c08-8ed6-9ea34c3a3392",
+    "n": "Case Mini Brut SLT113",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "9192d44e-6ef3-44a1-b4b1-10bc30dd76ae",
+    "n": "COB 240V LightSolution",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "cf9a51f6-9401-4797-b414-895dc7b8ce58",
+    "n": "Case COB 240V Eastman",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "808249d2-4ec3-421a-b384-0ad005e06f01",
+    "n": "COB 200W RGB",
+    "c": 4,
+    "is": false
+  },
+  {
+    "id": "e9c14615-db49-4d59-8cfe-5f6d91c63bf7",
+    "n": "COB 400W",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "94a348a4-41ec-4cfc-8c71-c8cb646d06fc",
+    "n": "Case COB 400W grandes",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "dae0c529-b8a2-44a4-9d33-9eb5df59050b",
+    "n": "Case cabezas móviles LED Zoom",
+    "c": 2,
+    "is": true
+  },
+  {
+    "id": "320baad7-2e65-4df5-920e-a80a19f21223",
+    "n": "Case cabezas móviles Beam 295 (cuadrado)",
+    "c": 6,
+    "is": true
+  },
+  {
+    "id": "e3322799-2151-4817-bac4-b9d6c2a3481b",
+    "n": "Case cabezas móviles Beam 295 (delgado)",
+    "c": 3,
+    "is": true
+  },
+  {
+    "id": "18c3708c-d0c0-4aa0-b4e7-c334450f208f",
+    "n": "Cercha plana",
+    "c": 63,
+    "is": false
+  },
+  {
+    "id": "5cb76d8e-c081-435d-8b1c-808207182bd4",
+    "n": "Largueros",
+    "c": 39,
+    "is": false
+  },
+  {
+    "id": "131c5345-f348-477b-80db-903453daa025",
+    "n": "Planchas pista de baile",
+    "c": 60,
+    "is": false
+  },
+  {
+    "id": "8dbe0143-8f5a-40e4-97d3-e6c048779d62",
+    "n": "Case patas de escalera",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "c30e19f0-e4b4-42a3-83e6-2e71717e0e5c",
+    "n": "Patas",
+    "c": 23,
+    "is": false
+  },
+  {
+    "id": "a4afe58f-f5d6-4269-bd2e-c9b801562651",
+    "n": "Diagonales amarillo",
+    "c": 8,
+    "is": false
+  },
+  {
+    "id": "3024955a-901a-4c69-adef-cc5ba9a19295",
+    "n": "Diagonales azul",
+    "c": 17,
+    "is": false
+  },
+  {
+    "id": "83d7cbce-fb4a-4efe-9f14-2d80d0a9e840",
+    "n": "Diagonales rosado",
+    "c": 15,
+    "is": false
+  },
+  {
+    "id": "27027958-d316-46c7-ac59-b5f84b51e499",
+    "n": "Cercha chica",
+    "c": 56,
+    "is": false
+  },
+  {
+    "id": "25088dd0-8bb0-46ba-938a-91e9bfe128a9",
+    "n": "Cerchas grandes",
+    "c": 30,
+    "is": false
+  },
+  {
+    "id": "5a8b64ec-8a17-4382-855b-045357df2037",
+    "n": "Media cercha",
+    "c": 6,
+    "is": false
+  },
+  {
+    "id": "4f0a1586-a6c8-40ec-b3e0-5ae2e86a40f6",
+    "n": "Pasa manos",
+    "c": 7,
+    "is": false
+  },
+  {
+    "id": "d52724aa-fe62-4820-b2d6-f88344a3bc9f",
+    "n": "Escalera 6",
+    "c": 4,
+    "is": false
+  },
+  {
+    "id": "7df69db7-834b-4110-ad3f-9e1fd61b0697",
+    "n": "Escalera 4",
+    "c": 4,
+    "is": false
+  },
+  {
+    "id": "15675491-44e2-47e2-8d8e-3d7eaa73324e",
+    "n": "Escalera 2 grande",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "79b20ec6-293e-42d8-b0e3-bc6c50c027f9",
+    "n": "Escalera 2",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "7e928806-ad84-4407-bf77-ef42245f9f02",
+    "n": "Base escalera",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "1fa0ded6-9abd-4646-a1de-a2d1a2747cbd",
+    "n": "Peldaños escalera",
+    "c": 15,
+    "is": false
+  },
+  {
+    "id": "b12d8b2a-47b5-4333-956a-6101d18e0c24",
+    "n": "Niveles escalera",
+    "c": 6,
+    "is": false
+  },
+  {
+    "id": "ba5747e0-cba7-4b6a-957e-cd85093fe349",
+    "n": "Niveles",
+    "c": 32,
+    "is": false
+  },
+  {
+    "id": "ecddeccb-68df-44d5-95ee-cc118fc5ef6f",
+    "n": "Planchas escenario",
+    "c": 47,
+    "is": false
+  },
+  {
+    "id": "d190345a-d135-4c02-88c6-bc166f7d112e",
+    "n": "Pólvora (fuegos fríos / chispas)",
+    "c": 0
+  },
+  {
+    "id": "83edab96-16af-4957-a713-ecd36fb59744",
+    "n": "Líquido Máquina de Humo",
+    "c": 0
+  },
+  {
+    "id": "fa500825-ea45-4fd5-8b87-cb6ae23827e5",
+    "n": "Maleta de cables especiales",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "4617d8d4-ddcb-49c0-86f3-7b68d62ade9f",
+    "n": "Maleta corchetes",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "d2a8b53e-de02-41ec-adc3-11ad042ed046",
+    "n": "Maleta de clams",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "315854bd-f965-4479-b229-9850361c1646",
+    "n": "Maleta pernos grandes (azul)",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "1b66fcd0-fcb7-448e-85db-68dc877c2958",
+    "n": "Maleta pernos chicos (negra)",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "910ce342-64b2-4773-a12b-873745d1f828",
+    "n": "Maleta cables de array",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "0de3d745-5d71-4b8a-8d4e-58d72b963f3f",
+    "n": "Maleta vertical array Proel",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "ad2d61ac-1cd2-4ee3-9b28-7ce40e7d55b5",
+    "n": "Maleta cables de poder",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "c3e947e2-e76a-491e-926f-bcc969e7ec7c",
+    "n": "Maleta cables señal pantalla",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "60731f7b-f1c5-4eae-b6ab-46b51bc99616",
+    "n": "Maleta cables poder pantalla",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "4235d1ca-3275-4e4f-829d-a21083cbcffd",
+    "n": "Balde herramientas",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "3c028556-be7c-424d-9783-d5b6f551cd8d",
+    "n": "Sierra de mano",
+    "c": 1
+  },
+  {
+    "id": "943772f6-7b8c-4076-ac51-9231262878a4",
+    "n": "Kit desatornillador de precisión",
+    "c": 1
+  },
+  {
+    "id": "8117778d-8250-4a10-802b-620fa9036c78",
+    "n": "Taladro",
+    "c": 1
+  },
+  {
+    "id": "83a85dcd-2bbb-47ff-b13b-7d5c2ef41dae",
+    "n": "Galletero chico",
+    "c": 1
+  },
+  {
+    "id": "300d4b72-6a84-4c0f-9a43-4357d63316d9",
+    "n": "Taladro inalámbrico",
+    "c": 1
+  },
+  {
+    "id": "9235079d-7e82-4a20-a9e8-2a2701d414cf",
+    "n": "Taladro inalámbrico",
+    "c": 2
+  },
+  {
+    "id": "85e53935-a5b6-43ad-bc07-f9f872229971",
+    "n": "Soplador",
+    "c": 1
+  },
+  {
+    "id": "61a5cd8f-1c47-41b4-80d1-6f8e9c9e66c9",
+    "n": "Motosierra",
+    "c": 1
+  },
+  {
+    "id": "f60df4ad-dd8c-4ed0-ad9c-a3d01c04c8bb",
+    "n": "Martillos",
+    "c": 5
+  },
+  {
+    "id": "9ef4e658-ad04-473d-a9d3-29204adb8c0d",
+    "n": "Taladro inalámbrico",
+    "c": 2
+  },
+  {
+    "id": "ff2dd0f2-fa7f-4578-8fa2-f5d4155ce972",
+    "n": "Taladro",
+    "c": 1
+  },
+  {
+    "id": "27bdc90f-b2f8-4ead-b70a-debc36d1532c",
+    "n": "Kit desatornillador de precisión",
+    "c": 1
+  },
+  {
+    "id": "5d3fd0c1-6405-45cb-8bac-6cf46539ed52",
+    "n": "Galletero chico",
+    "c": 1
+  },
+  {
+    "id": "704e2e11-98c1-4fd8-a8ee-abc45b1bf833",
+    "n": "Martillos",
+    "c": 5
+  },
+  {
+    "id": "a0f7ed82-7758-46bf-93fb-6e4ad2fa754d",
+    "n": "Sierra de mano",
+    "c": 1
+  },
+  {
+    "id": "bd0a99e5-3a8b-4613-87f3-ccc58c7baeb5",
+    "n": "Motosierra",
+    "c": 1
+  },
+  {
+    "id": "cf966681-24cf-4253-8856-0f3d9a9835de",
+    "n": "Soplador",
+    "c": 1
+  },
+  {
+    "id": "c18d5263-13f4-41a0-8d08-814ef34c6c7a",
+    "n": "Taladro inalámbrico",
+    "c": 1
+  },
+  {
+    "id": "f617a26c-f715-4d7b-ba87-30e61cdae5ca",
+    "n": "Taladro",
+    "c": 1
+  },
+  {
+    "id": "6cee2b39-f9b8-42df-ab54-5b194f4796ed",
+    "n": "Taladro inalámbrico",
+    "c": 1
+  },
+  {
+    "id": "8ff7d690-4d6f-453a-bd48-4364fa1dd05e",
+    "n": "Taladro inalámbrico",
+    "c": 2
+  },
+  {
+    "id": "fd01a2b1-657c-4c6b-a558-adb18e3f2029",
+    "n": "Soplador",
+    "c": 1
+  },
+  {
+    "id": "a2837e22-a7bd-4ae5-b2ec-4738dff86f1a",
+    "n": "Motosierra",
+    "c": 1
+  },
+  {
+    "id": "04d33f26-b9e3-4d37-b374-4af5e738f098",
+    "n": "Sierra de mano",
+    "c": 1
+  },
+  {
+    "id": "0155f62c-636b-415e-a5cb-a38aa69132b5",
+    "n": "Martillos",
+    "c": 5
+  },
+  {
+    "id": "24ffe5ed-a4ed-4dd2-bbf5-81498e17e89f",
+    "n": "Galletero chico",
+    "c": 1
+  },
+  {
+    "id": "9b7f32a9-efce-4f15-8c9f-57e5aa6df01e",
+    "n": "Kit desatornillador de precisión",
+    "c": 1
+  },
+  {
+    "id": "52ac431b-5185-4ed1-858a-44ab7e006be4",
+    "n": "Kit desatornillador de precisión",
+    "c": 1
+  },
+  {
+    "id": "1fa97109-234e-4a4e-b1ed-b50c5196fe84",
+    "n": "Taladro inalámbrico",
+    "c": 1
+  },
+  {
+    "id": "1821f978-747d-4447-a8c8-4a4c200c0ad5",
+    "n": "Taladro inalámbrico",
+    "c": 2
+  },
+  {
+    "id": "29bd36f0-66e2-4797-ba01-83a3e4df30b2",
+    "n": "Soplador",
+    "c": 1
+  },
+  {
+    "id": "8875e9e0-0b56-4f5e-a7fd-7452eb1db3c0",
+    "n": "Motosierra",
+    "c": 1
+  },
+  {
+    "id": "f8d975aa-2089-4b50-88b7-3e6046fd3d75",
+    "n": "Sierra de mano",
+    "c": 1
+  },
+  {
+    "id": "8546ab67-a4b7-40eb-8d6f-d51c7b98e105",
+    "n": "Martillos",
+    "c": 5
+  },
+  {
+    "id": "22ab0b02-5fcc-4377-97d7-b79b9eabd960",
+    "n": "Galletero chico",
+    "c": 1
+  },
+  {
+    "id": "96505795-4069-45be-b9c2-dc1be1065e5e",
+    "n": "Taladro",
+    "c": 1
+  },
+  {
+    "id": "5264958d-ff00-4edb-8229-32eb22f395fe",
+    "n": "Taladro inalámbrico",
+    "c": 2
+  },
+  {
+    "id": "7bf8f26b-9f03-467c-b9bf-dd639eb88b7e",
+    "n": "Taladro inalámbrico",
+    "c": 1
+  },
+  {
+    "id": "7ba14dbf-5241-40c9-8da2-e921f5d04450",
+    "n": "Soplador",
+    "c": 1
+  },
+  {
+    "id": "55f241a0-ce47-42e0-a63d-33e80aa008bd",
+    "n": "Motosierra",
+    "c": 1
+  },
+  {
+    "id": "b0f2502c-2ff6-4424-9074-0911658a98b3",
+    "n": "Sierra de mano",
+    "c": 1
+  },
+  {
+    "id": "62958f62-b379-458d-b367-d07b897cccae",
+    "n": "Martillos",
+    "c": 5
+  },
+  {
+    "id": "18359dc6-a9bb-4f44-8f7f-e3b7c8ca0213",
+    "n": "Galletero chico",
+    "c": 1
+  },
+  {
+    "id": "7cd03a48-f3fa-44ae-90b8-13ac32c98013",
+    "n": "Kit desatornillador de precisión",
+    "c": 1
+  },
+  {
+    "id": "4f763734-9cb1-4663-abb9-84da162b3d4f",
+    "n": "Taladro",
+    "c": 1
+  },
+  {
+    "id": "8543ddfa-578e-4cef-b4f6-5ebc7f816367",
+    "n": "Case cables array",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "9abbb68f-8d8f-496c-8be4-63f3ef252877",
+    "n": "Cable XLR 3m",
+    "c": 7
+  },
+  {
+    "id": "05e59fbe-e5ce-4117-b496-92e02a3e7799",
+    "n": "Cable XLR (Coplas)",
+    "c": 56
+  },
+  {
+    "id": "360cd8bb-e988-4864-a7ea-ec75a7ce09c2",
+    "n": "Multipar 8 canales",
+    "c": 1
+  },
+  {
+    "id": "c61d8f97-c73a-4a64-a071-923278e91a46",
+    "n": "Multipar 32 canales",
+    "c": 1
+  },
+  {
+    "id": "36dcda29-a017-4efc-9d0f-cdcc78725a24",
+    "n": "Adaptador XLR / Plug",
+    "c": 2
+  },
+  {
+    "id": "818de5d8-c855-4ae8-9603-6d7c0dae342e",
+    "n": "Cable Plug 6m",
+    "c": 1
+  },
+  {
+    "id": "f04303f3-8f5f-44c8-ab16-80dee47822b1",
+    "n": "Cable XLR 10m",
+    "c": 26
+  },
+  {
+    "id": "cc4d9a10-d31c-45a2-9c96-5b381302241e",
+    "n": "Cable XLR 6m",
+    "c": 15
+  },
+  {
+    "id": "24cea66f-ee88-4e2c-a992-07a86e2c4514",
+    "n": "Cable Plug Audio",
+    "c": 2
+  },
+  {
+    "id": "fe61188b-aef4-4e1a-89ac-61df0415b57b",
+    "n": "DMX-384B",
+    "c": 1
+  },
+  {
+    "id": "0893504c-bda6-4461-9cfb-3453abc6ba99",
+    "n": "QSC TouchMix 8",
+    "c": 1
+  },
+  {
+    "id": "3e070afd-52fc-47a9-b7d1-baeeb535bd29",
+    "n": "Tapco Mix 260FX",
+    "c": 2
+  },
+  {
+    "id": "295227c3-04f8-42be-85ad-fff7d6dafe1e",
+    "n": "Yamaha LS9-32",
+    "c": 1
+  },
+  {
+    "id": "c659f68e-f8ed-4f8b-b18c-26cb9cc2f7ac",
+    "n": "Yamaha MG16/6FX",
+    "c": 1
+  },
+  {
+    "id": "2bb8fab5-6487-44d4-a720-72469134a28b",
+    "n": "Behringer LC2412",
+    "c": 1
+  },
+  {
+    "id": "e528df3b-4e87-4be8-918a-1a3b531aed0c",
+    "n": "Mini Splitter DMX512 8 canales",
+    "c": 1
+  },
+  {
+    "id": "93668c08-5142-4e43-b9fe-d3f7b89cc24c",
+    "n": "Tapco Mix 260FX (en reparación)",
+    "c": 1
+  },
+  {
+    "id": "e9784aa7-1703-4a75-9336-cf3c1554a302",
+    "n": "Avid SC48",
+    "c": 1
+  },
+  {
+    "id": "d99ad558-d4d1-49b3-96d8-4ef5507e5b3c",
+    "n": "Yamaha Argera Studio 16 canales",
+    "c": 1
+  },
+  {
+    "id": "733197cc-97c3-4a20-a765-742dd6319902",
+    "n": "Alfapro DX350",
+    "c": 1
+  },
+  {
+    "id": "e53c624b-4c90-49b1-b2c2-807676db6517",
+    "n": "Digitech StudioQuad V2",
+    "c": 1
+  },
+  {
+    "id": "515735ef-0c80-46af-9663-d5578aed339b",
+    "n": "Splitter DMX512 8 canales",
+    "c": 1
+  },
+  {
+    "id": "83ff0efc-5696-42b0-b837-e3fcc1849ebd",
+    "n": "DMX Stage 24 Scene Setter",
+    "c": 1
+  },
+  {
+    "id": "fed2d6a2-4e76-4cc8-95db-4e601e925eeb",
+    "n": "DMX512",
+    "c": 1
+  },
+  {
+    "id": "d77665c4-e293-48a7-bc8f-bf0140639aa6",
+    "n": "Case Micrófonos",
+    "c": 1,
+    "is": true
+  },
+  {
+    "id": "7c207c83-f9f2-4970-8a07-a6b9f15005fd",
+    "n": "Drumkit JTS NX-Series",
+    "c": 1
+  },
+  {
+    "id": "5a06f64d-fe35-46d1-ae7f-080e619a215b",
+    "n": "Audix OM2",
+    "c": 1
+  },
+  {
+    "id": "cdd83b54-8d24-4ab5-9e7c-00c55cd0f1e6",
+    "n": "Shure 16A",
+    "c": 1
+  },
+  {
+    "id": "257d469b-c055-440a-a175-90ac512df114",
+    "n": "Shure KSM9",
+    "c": 1
+  },
+  {
+    "id": "8a32a13e-cb7d-46a7-a8d6-16ed5bb0d43b",
+    "n": "Pearl CR Condensador",
+    "c": 1
+  },
+  {
+    "id": "d1cad0e9-e8f8-46e7-bf2e-1ebd8726ae92",
+    "n": "Kit Cintillo Sennheiser",
+    "c": 1
+  },
+  {
+    "id": "a99bb0ec-85d4-49aa-841b-613cb6e07657",
+    "n": "Amplificador Audífonos Behringer PM1",
+    "c": 2
+  },
+  {
+    "id": "83a01dcb-7554-447d-8144-4cee1907abae",
+    "n": "Receptor Inalámbrico UHF AKG SR40",
+    "c": 1
+  },
+  {
+    "id": "25ca2c50-4d94-44f8-bfb4-31c504565902",
+    "n": "Podio Audio-Technica AT8615RS",
+    "c": 1
+  },
+  {
+    "id": "0b66113b-12c7-4d74-a481-cf7c2bcad5ac",
+    "n": "Receptor Inalámbrico Shure PSM200",
+    "c": 4
+  },
+  {
+    "id": "f9feb6c8-dc02-4096-bfeb-4d3583ce2936",
+    "n": "Receptor Inalámbrico PGXD4",
+    "c": 1
+  },
+  {
+    "id": "e9b97e7f-ec5a-4681-bcc8-d911b4f36876",
+    "n": "Kit Cintillo Shure BLX14/P31-M15",
+    "c": 1
+  },
+  {
+    "id": "16504919-6f7b-4f2d-84a3-98ad6996f606",
+    "n": "Kit Shure BLX4R 58",
+    "c": 1
+  },
+  {
+    "id": "a4b96de2-1db5-4c34-8ac6-671cf7561993",
+    "n": "Drumkit Sennheiser",
+    "c": 1
+  },
+  {
+    "id": "36f0f8d9-e17d-40cf-b1a3-b68acba9f77b",
+    "n": "Drumkit Shure DMK57-52",
+    "c": 3
+  },
+  {
+    "id": "5b82c426-d6ea-4824-8e8c-0103bc2c3f11",
+    "n": "Kit Shure BLX24R Beta 58",
+    "c": 1
+  },
+  {
+    "id": "550d2f11-411e-45ec-9168-22332d32af08",
+    "n": "Shure PGX2 / SM58",
+    "c": 1,
+    "is": false
+  },
+  {
+    "id": "bfcb4f7a-fe64-4eb1-888c-41f07fbc1aef",
+    "n": "CAJA ACTIVA JBL PRX715",
+    "c": 2
+  },
+  {
+    "id": "ecbf9710-e31a-4926-a0be-e30a2d1fba25",
+    "n": "SUBWOOFER JBL VRX918SP FUERA DE SERVICIO",
+    "c": 5
+  },
+  {
+    "id": "f9ea4d8b-0809-4024-b4fc-cfd3ff156c90",
+    "n": "ARRAY JBL VRX932LAP FUERA DE SERVICIO",
+    "c": 3
+  },
+  {
+    "id": "dde1da7a-1b23-4255-9d4d-c8e0d2ac8e66",
+    "n": "CAJA DIRECTA BEHRINGER ULTRA-DI DI100",
+    "c": 1
+  },
+  {
+    "id": "4a0152bf-8963-4290-8eef-4c26c32cf913",
+    "n": "VERTICAL ARRAY PROEL",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "91e3bfcf-5226-4d69-8053-f4fca526af28",
+    "n": "ARRAY JBL VRX932LAP",
+    "c": 16,
+    "is": false
+  },
+  {
+    "id": "8ca8f70c-3255-4389-980d-8345d0b3e97c",
+    "n": "CAJA DIRECTA SAMSON S-DIRECT PLUS",
+    "c": 2
+  },
+  {
+    "id": "f7604d1d-5824-42c0-ab3e-6cc95a8f7c83",
+    "n": "CAJA ACUSTICA ARRAY BOCA PEQUEÑA",
+    "c": 8
+  },
+  {
+    "id": "67a1a177-287f-4efe-93a6-772e70c04bdd",
+    "n": "CAJA DIRECTA PASIVA DBX DJDI",
+    "c": 1
+  },
+  {
+    "id": "166fbcc0-61b9-40ee-9da0-321f928121e8",
+    "n": "CAJA DIRECTA PASIVA WHIRLWIND IMP 2",
+    "c": 2
+  },
+  {
+    "id": "ed378233-9f23-4b67-b881-1a68b415dc92",
+    "n": "CAJA ACUSTICA",
+    "c": 9
+  },
+  {
+    "id": "10f6d35e-b951-4b08-95c3-e435c4edfa76",
+    "n": "SUBWOOFER JBL VRX918SP",
+    "c": 14,
+    "is": false
+  },
+  {
+    "id": "359170e2-607b-4f05-afb3-945e23ae42e1",
+    "n": "VERTICAL ARRAY DB",
+    "c": 2
+  },
+  {
+    "id": "5047fd8c-126c-4692-8c50-b34b64281d20",
+    "n": "MACKIE SRM 450",
+    "c": 4
+  },
+  {
+    "id": "577cdcf2-abe9-46e5-a923-8fc75ff5f7bc",
+    "n": "CAJA ACTIVA BT GENERICA",
+    "c": 1
+  },
+  {
+    "id": "200644aa-2587-4bd5-871b-41f9e09b0b6d",
+    "n": "CAJA DIRECTA PASIVA WHIRLWIND EDB1",
+    "c": 2
+  },
+  {
+    "id": "7c7c4ac4-8447-4cfc-9b6d-e8f84ec3a8bc",
+    "n": "CAJA ACUSTICA FUERA DE SERVICIO",
+    "c": 1
+  },
+  {
+    "id": "6400ca8b-b942-44bb-8430-02b75dade083",
+    "n": "WALKIE-TALKIE",
+    "c": 2
+  },
+  {
+    "id": "84d3f63f-e583-498a-b687-992be2c8b092",
+    "n": "BOMBO",
+    "c": 1
+  },
+  {
+    "id": "15324b92-8631-4ee3-9cb0-0fe80493edee",
+    "n": "ATRILES SIN PORTA MICROFONO",
+    "c": 11
+  },
+  {
+    "id": "b7e52272-aa5e-4497-b564-a0ae038ddfc3",
+    "n": "ATRILES CON PORTA MICROFONO",
+    "c": 15
+  },
+  {
+    "id": "4cb2cb58-8c24-4fc2-884b-7fe84444b08d",
+    "n": "DIVISOR DE SEÑAL WHIRLWIND IMP 1X3",
+    "c": 1
+  },
+  {
+    "id": "209ac540-03d4-4649-9f5f-f5996876f222",
+    "n": "TRUSS CUBOS",
+    "c": 2
+  },
+  {
+    "id": "5a9e8f6a-0b9e-4704-b9b9-b61eba648763",
+    "n": "PATA EN CRUZ",
+    "c": 2
+  },
+  {
+    "id": "bce18690-6b1c-4568-9bec-2d2f06750320",
+    "n": "BASES ESCENARIO ACRILICO",
+    "c": 12
+  },
+  {
+    "id": "fcf48fce-cd6d-4f2d-bf6f-6c085cbb3bbb",
+    "n": "CUBOS MEDIANOS",
+    "c": 2
+  },
+  {
+    "id": "a64a9be4-cff2-4284-8bd4-e4c0e41821dd",
+    "n": "TRUSS TRIANGULARES 1.5M",
+    "c": 2
+  },
+  {
+    "id": "b93e2578-1683-4be2-9c2f-52fda8fd52ba",
+    "n": "PATA EN X",
+    "c": 10
+  },
+  {
+    "id": "53c27389-157b-483c-9a5c-61b45f5b9f17",
+    "n": "PORTA TECLE RECTANGULAR",
+    "c": 2
+  },
+  {
+    "id": "79fb4a23-4f95-415a-9fca-e03400692d4e",
+    "n": "PORTA TECLE TRIANGULAR",
+    "c": 2
+  },
+  {
+    "id": "444094d7-f3cd-4ac8-a859-748c63e521ad",
+    "n": "PLANCHAS ESCENARIO",
+    "c": 49
+  },
+  {
+    "id": "17a7fbfc-fa52-4df6-9365-6f74a6593103",
+    "n": "TRUSS CUADRADOS 1M",
+    "c": 2,
+    "is": false
+  },
+  {
+    "id": "8d6f0b36-3ae7-433c-8732-6c48f045475a",
+    "n": "PORTA TECLE CUADRADO",
+    "c": 2
+  },
+  {
+    "id": "fba691f3-a534-457b-9221-80e8c241a4b4",
+    "n": "PATAS CUADRADAS",
+    "c": 8
+  },
+  {
+    "id": "dcbf15c9-5bae-4044-9010-ba6f41258ce0",
+    "n": "TRUSS TRIANGULARES 2M",
+    "c": 5,
+    "is": false
+  },
+  {
+    "id": "ab46070c-35c1-4917-9347-0020bb084893",
+    "n": "TRUSS CUADRADOS 2M",
+    "c": 6,
+    "is": false
+  },
+  {
+    "id": "44b46180-183b-4851-a656-e9c7e510f001",
+    "n": "PATAS TRIANGULARES",
+    "c": 6
+  },
+  {
+    "id": "e96248fe-7b8c-4996-8740-e1abf8f2bb67",
+    "n": "TRUSS CUADRADOS 3M",
+    "c": 8,
+    "is": false
+  },
+  {
+    "id": "d529b3f3-676c-4eee-b04d-4fcc30c60011",
+    "n": "TRUSS TRIANGULARES 3M",
+    "c": 4
+  },
+  {
+    "id": "53fe5beb-0319-4024-9039-04a40f4dea1a",
+    "n": "TRUSS TRIANGULARES 1M",
+    "c": 2
+  },
+  {
+    "id": "cf836b1c-9fdf-4d26-a6fd-7075bfbe4ade",
+    "n": "LINGAS CAFE",
+    "c": 2
+  },
+  {
+    "id": "4dd13e56-ab62-4fae-b66f-379e38fb3529",
+    "n": "PLANCHAS PISTA DE BAILE",
+    "c": 44
+  },
+  {
+    "id": "345959b0-e3c9-4c76-a472-d502cce75362",
+    "n": "LINGAS BLANCAS",
+    "c": 9
+  },
+  {
+    "id": "8d67ebbe-8fe0-4eeb-b629-18881b120db0",
+    "n": "LINGAS VERDES",
+    "c": 2
+  },
+  {
+    "id": "6aa1324a-77b1-4ff7-a9fd-5eca358836b6",
+    "n": "TECLES FUERA DE SERVICIO",
+    "c": 2
+  },
+  {
+    "id": "7fc463e7-4c3a-4f1c-94d7-05fd23715b7c",
+    "n": "TECLES OPERATIVOS",
+    "c": 4
+  },
+  {
+    "id": "e19ca628-5b80-4765-8284-dac839025cde",
+    "n": "MALACATE GRANDE",
+    "c": 2
+  },
+  {
+    "id": "62f7e749-379d-4cc4-a32e-6b1a39595df0",
+    "n": "MALACATE CHICO",
+    "c": 2
+  },
+  {
+    "id": "0d479703-b5fe-49eb-a2ad-c5ca37351763",
+    "n": "PELDAÑO ACRILICO",
+    "c": 2
+  },
+  {
+    "id": "4d13048a-2572-4c59-92f3-d2abecbdd7f0",
+    "n": "ESCENARIO ACRILICO PLANCHAS",
+    "c": 6
+  },
+  {
+    "id": "2b05c9fc-07d9-4476-b120-62408a2e9d43",
+    "n": "LARGUEROS EN X ESCENARIO ACRILICO",
+    "c": 12
+  },
+  {
+    "id": "b810f602-aa66-4022-8e54-455681fd44fa",
+    "n": "BASES CUADRADAS",
+    "c": 8
+  },
+  {
+    "id": "3affddc1-36c7-4d22-85a7-3e2b1a42e260",
+    "n": "PORTA ARRAY X",
+    "c": 4
+  },
+  {
+    "id": "9fd97a6f-5e16-4875-8855-53f06b39ba46",
+    "n": "PASA CABLE",
+    "c": 15
+  },
+  {
+    "id": "eaaf407e-3723-4731-865e-26f867ab5461",
+    "n": "TRUSS CUBOS PEQUEÑOS",
+    "c": 2
+  }
+]

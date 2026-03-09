@@ -1,0 +1,8 @@
+release/
+release
+.electron-builder
+dist/
+*.exe
+*.AppImage
+*.dmg
+node_modules/

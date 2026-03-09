@@ -1,0 +1,474 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #030213;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    /* Prevent flash on tap (iOS Safari) */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    font-size: var(--font-size);
+    /* Prevent font size inflation on orientation change (iOS) */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Smooth momentum scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ── PWA safe area support (iPhone notch + home indicator) ── */
+  @supports (padding: env(safe-area-inset-top)) {
+    /* Header absorbs status bar on standalone PWA */
+    header.pwa-header {
+      padding-top: max(10px, env(safe-area-inset-top));
+    }
+
+    /* Main content clears the home indicator */
+    .pwa-main {
+      padding-bottom: max(1.5rem, calc(1rem + env(safe-area-inset-bottom)));
+    }
+  }
+
+  /* Smooth scroll on all scrollable areas (iOS momentum) */
+  .overflow-auto,
+  .overflow-y-auto,
+  main {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Prevent double-tap zoom on buttons and interactive elements */
+  button, a, [role="button"] {
+    touch-action: manipulation;
+  }
+
+  /* Hide scrollbar on overflow-x-auto containers (tabs nav, etc.) */
+  .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+  .overflow-x-auto {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Minimum 44×44px touch targets (WCAG 2.5.5) */
+  button:not([class*="h-"]),
+  [role="button"]:not([class*="h-"]) {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Prevent iOS zoom on input focus (requires font-size >= 16px) */
+  input,
+  select,
+  textarea {
+    font-size: max(16px, 1em);
+  }
+
+  /* ========================================================
+   Phase 5: Print Styles
+   ======================================================== */
+  @media print {
+    @page {
+      size: A4;
+      margin: 8mm 12mm;
+    }
+
+    body {
+      background-color: white !important;
+      color: black !important;
+      font-size: 11px !important;
+    }
+
+    .hide-on-print,
+    .no-print {
+      display: none !important;
+    }
+
+    .print-container {
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .print-block {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .print-avoid-break {
+      page-break-inside: avoid;
+    }
+
+    /* Force borders and backgrounds to print correctly in Webkit */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /* Hide the sidebar */
+    [data-sidebar="sidebar"] {
+      display: none !important;
+    }
+
+    /* Hide toasts */
+    #sonner-toaster {
+      display: none !important;
+    }
+
+    /* Cleanup shadowed cards */
+    .border,
+    .shadow-sm {
+      box-shadow: none !important;
+      border-color: #e5e7eb !important;
+    }
+
+    /* ── Ficha compact print ── */
+    .ficha-header {
+      padding-bottom: 8px !important;
+      margin-bottom: 8px !important;
+    }
+
+    .ficha-header h1 {
+      font-size: 18px !important;
+    }
+
+    .ficha-header h2 {
+      font-size: 13px !important;
+    }
+
+    .ficha-info-grid {
+      gap: 16px !important;
+      margin-bottom: 8px !important;
+    }
+
+    .ficha-section-title {
+      font-size: 10px !important;
+      padding-bottom: 2px !important;
+      margin-bottom: 4px !important;
+    }
+
+    .ficha-section-text {
+      font-size: 10px !important;
+      line-height: 1.3 !important;
+    }
+
+    .ficha-table th {
+      padding: 4px 6px !important;
+      font-size: 9px !important;
+    }
+
+    .ficha-table td {
+      padding: 3px 6px !important;
+      font-size: 10px !important;
+      line-height: 1.2 !important;
+    }
+
+    .ficha-table .kit-badge {
+      font-size: 8px !important;
+      padding: 0 3px !important;
+    }
+
+    .ficha-table .kit-detail {
+      font-size: 8px !important;
+      margin-top: 1px !important;
+    }
+
+    .ficha-check-box {
+      width: 14px !important;
+      height: 14px !important;
+    }
+
+    .ficha-signatures {
+      margin-top: 24px !important;
+      padding-top: 16px !important;
+    }
+
+    .ficha-equipment-title {
+      font-size: 12px !important;
+      padding-bottom: 4px !important;
+      margin-bottom: 6px !important;
+    }
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+}
+
+/* ================================================================
+   Dark mode global overrides
+   Strategy: remap hardcoded Tailwind colors to dark-friendly values.
+   Using HSL for broad browser support.
+   ================================================================ */
+@media not print {
+
+  /* ── Backgrounds: neutrals ── */
+  .dark .bg-white           { background-color: #1a1a2e !important; } /* dark navy-purple base */
+  .dark .bg-gray-50         { background-color: #1e1e30 !important; }
+  .dark .bg-gray-100        { background-color: #252538 !important; }
+  .dark .bg-gray-200        { background-color: #2e2e45 !important; }
+
+  /* Hover states for neutrals */
+  .dark .hover\:bg-gray-50:hover   { background-color: #1e1e30 !important; }
+  .dark .hover\:bg-gray-100:hover  { background-color: #252538 !important; }
+  .dark .hover\:bg-white:hover     { background-color: #1e1e30 !important; }
+
+  /* ── Text: neutrals ── */
+  .dark .text-gray-900  { color: #f0f0ff !important; }
+  .dark .text-gray-800  { color: #e0e0f5 !important; }
+  .dark .text-gray-700  { color: #cccce0 !important; }
+  .dark .text-gray-600  { color: #a0a0c0 !important; }
+  .dark .text-gray-500  { color: #7878a0 !important; }
+  .dark .text-gray-400  { color: #606085 !important; }
+
+  /* ── Borders: neutrals ── */
+  .dark .border-gray-100  { border-color: #2a2a42 !important; }
+  .dark .border-gray-200  { border-color: #333350 !important; }
+  .dark .border-gray-300  { border-color: #444465 !important; }
+  .dark .border-gray-400  { border-color: #555575 !important; }
+  .dark .divide-gray-200 > * + * { border-color: #2a2a42 !important; }
+
+  /* ── Colored badge backgrounds ── */
+  .dark .bg-violet-50   { background-color: #22203a !important; }
+  .dark .bg-purple-50   { background-color: #241e3a !important; }
+  .dark .bg-indigo-50   { background-color: #1e2038 !important; }
+  .dark .bg-blue-50     { background-color: #1a2035 !important; }
+  .dark .bg-emerald-50  { background-color: #1a2e28 !important; }
+  .dark .bg-green-50    { background-color: #1a2e24 !important; }
+  .dark .bg-amber-50    { background-color: #2e2618 !important; }
+  .dark .bg-orange-50   { background-color: #2e2218 !important; }
+  .dark .bg-red-50      { background-color: #2e1a1a !important; }
+  .dark .bg-pink-50     { background-color: #2e1a28 !important; }
+  .dark .bg-yellow-50   { background-color: #2a2614 !important; }
+
+  /* ── Colored badge text (lighter for dark bg contrast) ── */
+  .dark .text-violet-600  { color: #b78fff !important; }
+  .dark .text-violet-500  { color: #c49fff !important; }
+  .dark .text-purple-700  { color: #c084fc !important; }
+  .dark .text-purple-600  { color: #c084fc !important; }
+  .dark .text-indigo-500  { color: #a5b4fc !important; }
+  .dark .text-indigo-600  { color: #a5b4fc !important; }
+  .dark .text-blue-600    { color: #60a5fa !important; }
+  .dark .text-blue-500    { color: #60a5fa !important; }
+  .dark .text-blue-700    { color: #93c5fd !important; }
+  .dark .text-emerald-600 { color: #34d399 !important; }
+  .dark .text-emerald-500 { color: #6ee7b7 !important; }
+  .dark .text-green-500   { color: #4ade80 !important; }
+  .dark .text-green-600   { color: #34d399 !important; }
+  .dark .text-amber-500   { color: #fbbf24 !important; }
+  .dark .text-amber-600   { color: #f59e0b !important; }
+  .dark .text-orange-700  { color: #fb923c !important; }
+  .dark .text-orange-400  { color: #fba44a !important; }
+  .dark .text-red-500     { color: #f87171 !important; }
+  .dark .text-red-600     { color: #f87171 !important; }
+  .dark .text-red-700     { color: #fca5a5 !important; }
+  .dark .text-orange-500  { color: #fb923c !important; }
+
+  /* ── Colored borders for badges ── */
+  .dark .border-violet-200  { border-color: #4c3a80 !important; }
+  .dark .border-purple-200  { border-color: #5b3880 !important; }
+  .dark .border-indigo-200  { border-color: #3b3f80 !important; }
+  .dark .border-blue-200    { border-color: #2a3f70 !important; }
+  .dark .border-emerald-200 { border-color: #1a5040 !important; }
+  .dark .border-green-200   { border-color: #1a4832 !important; }
+  .dark .border-amber-200   { border-color: #60440a !important; }
+  .dark .border-orange-100  { border-color: #5a3510 !important; }
+  .dark .border-red-100     { border-color: #5a1e1e !important; }
+  .dark .border-red-200     { border-color: #6b2828 !important; }
+  .dark .border-purple-100  { border-color: #3d2860 !important; }
+  .dark .border-gray-400    { border-color: #555575 !important; }
+
+  /* ── Colored text inside red/orange/amber panels ── */
+  .dark .text-orange-700 { color: #fb923c !important; }
+  .dark .text-red-800    { color: #fca5a5 !important; }
+  .dark .text-red-700    { color: #fca5a5 !important; }
+  .dark .text-emerald-600 { color: #34d399 !important; }
+
+  /* ── Inline bg for colored icon wrappers ── */
+  .dark .bg-blue-100    { background-color: #1e2f50 !important; }
+  .dark .bg-purple-100  { background-color: #2a1f4e !important; }
+  .dark .bg-green-100   { background-color: #1a3828 !important; }
+  .dark .bg-emerald-100 { background-color: #1a3830 !important; }
+  .dark .bg-amber-100   { background-color: #3a2e10 !important; }
+  .dark .bg-red-100     { background-color: #3a1e1e !important; }
+  .dark .bg-orange-100  { background-color: #3a2418 !important; }
+  .dark .bg-yellow-400\/20 { background-color: rgba(251,191,36,0.12) !important; }
+
+  /* Blue text in blue-100 badges */
+  .dark .text-blue-700  { color: #93c5fd !important; }
+  .dark .text-purple-800 { color: #d8b4fe !important; }
+  .dark .text-purple-900 { color: #e9d5ff !important; }
+  .dark .text-green-600  { color: #4ade80 !important; }
+  .dark .text-amber-700  { color: #fcd34d !important; }
+
+  /* ── Shadow (make visible on dark bg) ── */
+  .dark .shadow-sm  { box-shadow: 0 1px 3px rgba(0,0,0,0.4) !important; }
+  .dark [class*="shadow-\["] { box-shadow: 0 2px 12px rgba(0,0,0,0.4) !important; }
+}

@@ -1,0 +1,64 @@
+﻿Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+node.exe : ÔÜá The "middleware" file 
+convention is deprecated. Please use 
+"proxy" instead. Learn more: https://ne
+xtjs.org/docs/messages/middleware-to-pr
+oxy
+En línea: 1 Carácter: 1
++ & "C:\Program Files\nodejs/node.exe" 
+"C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpeci 
+   fied: (ÔÜá The "middle...leware-to  
+  -proxy:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCo 
+   mmandError
+ 
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 2.5s
+  Running TypeScript ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/21) ...
+  Generating static pages using 15 workers (5/21) 
+  Generating static pages using 15 workers (10/21) 
+  Generating static pages using 15 workers (15/21) 
+Ô£ô Generating static pages using 15 workers (21/21) in 336.0ms
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ ãÆ /api/clients
+Ôö£ ãÆ /api/clients/[id]
+Ôö£ ãÆ /api/desmontajes
+Ôö£ ãÆ /api/desmontajes/[id]
+Ôö£ ãÆ /api/events
+Ôö£ ãÆ /api/events/[id]
+Ôö£ ãÆ /api/inventory
+Ôö£ ãÆ /api/inventory/[id]
+Ôö£ ãÆ /api/montajes
+Ôö£ ãÆ /api/montajes/[id]
+Ôö£ ãÆ /api/vehicles
+Ôö£ ãÆ /api/vehicles/[id]
+Ôö£ ãÆ /api/workers
+Ôö£ ãÆ /api/workers/[id]
+Ôö£ Ôùï /clientes
+Ôö£ Ôùï /configuracion
+Ôö£ Ôùï /desmontaje
+Ôö£ Ôùï /eventos
+Ôö£ Ôùï /inventario
+Ôö£ Ôùï /login
+Ôö£ Ôùï /montaje
+Ôö£ Ôùï /reportes
+Ôö£ Ôùï /trabajadores
+Ôöö Ôùï /vehiculos
+
+
+ãÆ Proxy (Middleware)
+
+Ôùï  (Static)   prerendered as static content
+ãÆ  (Dynamic)  server-rendered on demand
+

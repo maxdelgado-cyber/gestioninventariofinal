@@ -1,0 +1,48 @@
+{
+    "name": "Allegra Producciones",
+    "short_name": "Allegra",
+    "description": "Sistema de Gestión de Inventario y Eventos - Allegra Producciones",
+    "background_color": "#1a1a2e",
+    "theme_color": "#8B1DDF",
+    "display": "standalone",
+    "display_override": ["standalone", "minimal-ui"],
+    "orientation": "portrait-primary",
+    "start_url": "/",
+    "scope": "/",
+    "lang": "es-CL",
+    "categories": ["business", "productivity"],
+    "icons": [
+        {
+            "src": "/icon-512.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Eventos",
+            "short_name": "Eventos",
+            "url": "/eventos",
+            "icons": [{ "src": "/icon-512.png", "sizes": "96x96" }]
+        },
+        {
+            "name": "Montaje",
+            "short_name": "Montaje",
+            "url": "/montaje",
+            "icons": [{ "src": "/icon-512.png", "sizes": "96x96" }]
+        }
+    ]
+}

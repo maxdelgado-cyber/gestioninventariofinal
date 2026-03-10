@@ -156,6 +156,14 @@ export interface WorkerAnotacion {
     autor: string;
 }
 
+export interface RegistroHoraSimple {
+    id: string;
+    fecha: string;
+    horas: number;
+    eventoNombre?: string;
+    observacion?: string;
+}
+
 export interface Worker {
     id: string;
     nombre: string;
@@ -171,6 +179,7 @@ export interface Worker {
     fechaIngreso: string;
     historialEventos: WorkerEventHistory[];
     anotaciones: WorkerAnotacion[];
+    horasRegistradas?: RegistroHoraSimple[];
     registroSemanal: RegistroSemanal[];
     notas?: string;
     imagenUrl?: string;
@@ -266,4 +275,31 @@ export interface Desmontalje {
     horaRetorno: string;
     incidencias: string[];
     completado: boolean;
+}
+
+export interface ItemInventarioExterno {
+    id: string;
+    nombre: string;
+    cantidad: number;
+    categoria?: string;
+    marca?: string;
+    modelo?: string;
+    estado?: string;
+    notas?: string;
+}
+
+export interface InventarioExterno {
+    id: string;
+    nombre: string;
+    trabajadorId: string;
+    trabajadorNombre: string;
+    eventoId?: string;
+    eventoNombre?: string;
+    fechaEntrega: string;
+    fechaDevolucion?: string;
+    estado: 'Activo' | 'Devuelto' | 'Pendiente';
+    items: ItemInventarioExterno[];
+    notas?: string;
+    createdAt: string;
+    updatedAt: string;
 }

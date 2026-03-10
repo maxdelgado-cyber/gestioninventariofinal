@@ -45,7 +45,7 @@ export function ClienteFormDialog({ open, onClose, onSaved, client }: Props) {
     const [saving, setSaving] = useState(false);
 
     const formatRut = (rutValue: string) => {
-        let clean = rutValue.replace(/[^0-9kK]/g, '');
+        const clean = rutValue.replace(/[^0-9kK]/g, '');
         if (clean.length > 1) {
             const dv = clean.slice(-1);
             let body = clean.slice(0, -1);
@@ -184,7 +184,7 @@ export function ClienteFormDialog({ open, onClose, onSaved, client }: Props) {
                                 <SelectItem value="Coquimbo">Coquimbo</SelectItem>
                                 <SelectItem value="Valparaíso">Valparaíso</SelectItem>
                                 <SelectItem value="Metropolitana de Santiago">Metropolitana de Santiago</SelectItem>
-                                <SelectItem value="Libertador Gral. B. O'Higgins">Libertador Gral. B. O'Higgins</SelectItem>
+                                <SelectItem value="Libertador Gral. B. O'Higgins">Libertador Gral. B. O&apos;Higgins</SelectItem>
                                 <SelectItem value="Maule">Maule</SelectItem>
                                 <SelectItem value="Ñuble">Ñuble</SelectItem>
                                 <SelectItem value="Biobío">Biobío</SelectItem>

@@ -7,6 +7,7 @@ import {
     Calendar,
     Building2,
     Package,
+    Boxes,
     PackageCheck,
     PackageX,
     Truck,
@@ -22,6 +23,7 @@ const navItems = [
     { name: 'Eventos', href: '/eventos', icon: Calendar },
     { name: 'Clientes', href: '/clientes', icon: Building2 },
     { name: 'Inventario', href: '/inventario', icon: Package },
+    { name: 'Inv. Externo', href: '/inventario-externo', icon: Boxes },
     { name: 'Montaje', href: '/montaje', icon: PackageCheck },
     { name: 'Desmontaje', href: '/desmontaje', icon: PackageX },
     { name: 'Vehículos', href: '/vehiculos', icon: Truck },
@@ -62,9 +64,12 @@ export function AppSidebar({ mobileOpen, onClose }: AppSidebarProps) {
                 {/* Brand header — responsive for both mobile and desktop */}
                 {/* Mobile: full gradient with close button */}
                 <div
-                    className="flex items-center gap-3 px-4 py-4 lg:hidden"
+                    className="lg:hidden flex flex-col"
                     style={{ background: 'linear-gradient(135deg, #C026D3 0%, #7C3AED 100%)' }}
                 >
+                    {/* Spacer para notch/Dynamic Island */}
+                    <div style={{ height: 'env(safe-area-inset-top)' }} />
+                    <div className="flex items-center gap-3 px-4 py-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                         src="/logo.jpg"
@@ -82,6 +87,7 @@ export function AppSidebar({ mobileOpen, onClose }: AppSidebarProps) {
                     >
                         <X className="h-5 w-5" />
                     </button>
+                    </div>{/* fin contenido sidebar header */}
                 </div>
 
                 <nav className="flex flex-col gap-0.5 px-2.5 pt-3 pb-4 flex-1">

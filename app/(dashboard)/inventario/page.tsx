@@ -153,15 +153,17 @@ export default function InventarioPage() {
                 onCancel={() => setDeleteId(null)}
             />
 
+            {/* Page header */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">Inventario General</h1>
+                    <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">Inventario</h1>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Control de equipamiento y stock</p>
                 </div>
                 <Button onClick={openNew} className="bg-[#8B1DDF] hover:bg-[#7214B8] text-white shadow-sm rounded-xl px-5 h-10 font-bold transition-colors">
                     <Plus className="mr-2 h-4 w-4" />Ingresar Equipo
                 </Button>
             </div>
+
 
 
 

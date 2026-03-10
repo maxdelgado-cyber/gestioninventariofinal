@@ -440,7 +440,7 @@ export default function DesmontajePage() {
                 <div className="bg-white border rounded-lg shadow-sm h-48 flex flex-col items-center justify-center text-gray-500 space-y-3">
                     <div className="bg-gray-100 p-3 rounded-full"><CalendarDays className="h-6 w-6 text-gray-400" /></div>
                     <p>No hay eventos montados pendientes de desmontaje.</p>
-                    <p className="text-xs text-gray-400">Los eventos en estado "Montado" aparecerán aquí cuando estén listos para retorno.</p>
+                    <p className="text-xs text-gray-400">Los eventos en estado &quot;Montado&quot; aparecerán aquí cuando estén listos para retorno.</p>
                 </div>
             )}
         </div>

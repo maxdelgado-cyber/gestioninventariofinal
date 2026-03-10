@@ -160,11 +160,11 @@ export default function DashboardPage() {
 
             {/* ── Page header ── */}
             <div>
-                <h1 className="text-[26px] font-bold text-gray-900 tracking-tight leading-tight">
-                    Panel de Control Estratégico
+                <h1 className="text-xl sm:text-[26px] font-bold text-gray-900 dark:text-gray-100 tracking-tight leading-tight">
+                    Panel de Control
                 </h1>
                 <p className="text-[13px] text-gray-400 mt-0.5">
-                    Sistema de Gestión Integral - Allegra Producciones
+                    Allegra Producciones
                 </p>
             </div>
 
@@ -379,7 +379,7 @@ export default function DashboardPage() {
                                             <div className="flex items-center gap-3 mt-1.5">
                                                 <span className="flex items-center gap-1 text-[11px] text-gray-400">
                                                     <Calendar className="h-3 w-3" />
-                                                    {format(new Date(ev.fechaInicio), "d/M/yyyy")}
+                                                    {format(new Date(ev.fechaInicio.substring(0, 10) + 'T00:00:00'), "d/M/yyyy")}
                                                 </span>
                                                 <span className="flex items-center gap-1 text-[11px] text-gray-400">
                                                     <Tag className="h-3 w-3" />

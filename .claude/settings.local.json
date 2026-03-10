@@ -3,7 +3,21 @@
     "allow": [
       "Bash(npx tsc:*)",
       "Bash(ls:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(cmd /c \"for /f \"\"tokens=5\"\" %a in \\(''netstat -ano ^| findstr :3000 ^| findstr LISTENING''\\) do echo %a\")",
+      "Bash(cmd /c \"netstat -ano | findstr :3000\")",
+      "mcp__ide__getDiagnostics",
+      "Skill(mobile-design)",
+      "Skill(nextjs-best-practices)",
+      "Skill(tailwind-patterns)",
+      "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && npm install --save-dev cross-env 2>&1 | tail -5)",
+      "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && python \"C:\\\\Users\\\\MaxDe\\\\.claude\\\\skills\\\\senior-qa\\\\scripts\\\\coverage_analyzer.py\" . 2>&1 | head -80)",
+      "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && npm run lint 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && npm run lint 2>&1 | grep -v \"BABEL\" | grep \"error\")",
+      "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && npm run lint 2>&1 | grep -v \"BABEL\" | grep -B1 \"require\\(\\)\" | grep \"^C:\" | sort -u)",
+      "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && npm run lint 2>&1 | grep -v \"BABEL\" | tail -5)",
+      "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && npm run lint 2>&1 | grep -v \"BABEL\" | grep \"error\" | grep -v \"warning\")"
     ]
   }
 }

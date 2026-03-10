@@ -145,11 +145,6 @@
 
   /* ── PWA safe area support (iPhone notch + home indicator) ── */
   @supports (padding: env(safe-area-inset-top)) {
-    /* Header absorbs status bar on standalone PWA */
-    header.pwa-header {
-      padding-top: max(10px, env(safe-area-inset-top));
-    }
-
     /* Main content clears the home indicator */
     .pwa-main {
       padding-bottom: max(1.5rem, calc(1rem + env(safe-area-inset-bottom)));
@@ -170,10 +165,12 @@
   }
 
   /* Hide scrollbar on overflow-x-auto containers (tabs nav, etc.) */
-  .overflow-x-auto::-webkit-scrollbar {
+  .overflow-x-auto::-webkit-scrollbar,
+  .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
-  .overflow-x-auto {
+  .overflow-x-auto,
+  .scrollbar-none {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }

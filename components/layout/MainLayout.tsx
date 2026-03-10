@@ -37,9 +37,15 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
 
             {/* ── TOP HEADER — pink → purple gradient ── */}
             <header
-                className="pwa-header text-white flex items-center justify-between px-4 sm:px-5 py-2.5 z-50 flex-shrink-0 shadow-xl print:hidden"
+                className="pwa-header text-white z-50 flex-shrink-0 shadow-xl print:hidden flex flex-col"
                 style={{ background: 'linear-gradient(90deg, #C026D3 0%, #9333EA 40%, #7C3AED 70%, #5B21B6 100%)' }}
             >
+                {/* Spacer para el notch/Dynamic Island del iPhone */}
+                <div style={{ height: 'env(safe-area-inset-top)' }} />
+
+                {/* Contenido real del header */}
+                <div className="flex items-center justify-between px-4 sm:px-5 py-2.5">
+
                 {/* Left: Hamburger (mobile) + Logo + brand */}
                 <div className="flex items-center gap-2 sm:gap-3">
                     {/* Hamburger button — mobile only */}
@@ -87,6 +93,7 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
                         <span className="hidden sm:inline font-medium text-sm">Salir</span>
                     </Button>
                 </div>
+                </div>{/* fin contenido header */}
             </header>
 
             {/* ── BODY ── */}

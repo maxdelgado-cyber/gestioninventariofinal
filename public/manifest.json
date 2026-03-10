@@ -11,6 +11,7 @@
     "scope": "/",
     "lang": "es-CL",
     "categories": ["business", "productivity"],
+    "prefer_related_applications": false,
     "icons": [
         {
             "src": "/icon-512.png",
@@ -39,9 +40,21 @@
             "icons": [{ "src": "/icon-512.png", "sizes": "96x96" }]
         },
         {
+            "name": "Inventario",
+            "short_name": "Inventario",
+            "url": "/inventario",
+            "icons": [{ "src": "/icon-512.png", "sizes": "96x96" }]
+        },
+        {
             "name": "Montaje",
             "short_name": "Montaje",
             "url": "/montaje",
+            "icons": [{ "src": "/icon-512.png", "sizes": "96x96" }]
+        },
+        {
+            "name": "Trabajadores",
+            "short_name": "Trabajadores",
+            "url": "/trabajadores",
             "icons": [{ "src": "/icon-512.png", "sizes": "96x96" }]
         }
     ]

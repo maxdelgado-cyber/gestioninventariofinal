@@ -10,20 +10,20 @@ const ThemeContext = createContext<{
 }>({ theme: 'light', toggle: () => {} });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [theme, setTheme] = useState<Theme>('light');
+    const [theme, setTheme] = useState<Theme>(() => {
+        if (typeof window === 'undefined') return 'light';
+        return (localStorage.getItem('allegra_theme') as Theme) ?? 'light';
+    });
 
+    // Sync the class on the document when theme changes
     useEffect(() => {
-        const stored = localStorage.getItem('allegra_theme') as Theme | null;
-        const initial = stored ?? 'light';
-        setTheme(initial);
-        document.documentElement.classList.toggle('dark', initial === 'dark');
-    }, []);
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+    }, [theme]);
 
     const toggle = () => {
         const next = theme === 'light' ? 'dark' : 'light';
         setTheme(next);
         localStorage.setItem('allegra_theme', next);
-        document.documentElement.classList.toggle('dark', next === 'dark');
     };
 
     return (

@@ -1,21 +1,20 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Plus, Search, MoreHorizontal, Users, Edit, Trash2 } from 'lucide-react';
+import { Plus, Search, Users, Edit, Trash2, Clock, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import {
     Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table';
-import {
-    DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { Worker } from '@/types/allegra';
 import { workersAPI } from '@/lib/api/workers';
 import { toast } from 'sonner';
 import { TrabajadorFormDialog } from '@/components/forms/TrabajadorFormDialog';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
+import { AnotacionesModal } from '@/components/modals/AnotacionesModal';
+import { RegistroHorasModal } from '@/components/modals/RegistroHorasModal';
 
 export default function TrabajadoresPage() {
     const [workers, setWorkers] = useState<Worker[]>([]);
@@ -25,6 +24,8 @@ export default function TrabajadoresPage() {
     const [selectedWorker, setSelectedWorker] = useState<Worker | null>(null);
     const [deleteId, setDeleteId] = useState<string | null>(null);
     const [deleting, setDeleting] = useState(false);
+    const [horasWorker, setHorasWorker] = useState<Worker | null>(null);
+    const [anotacionesWorker, setAnotacionesWorker] = useState<Worker | null>(null);
 
     useEffect(() => { loadWorkers(); }, []);
 
@@ -39,6 +40,8 @@ export default function TrabajadoresPage() {
 
     const openNew = () => { setSelectedWorker(null); setDialogOpen(true); };
     const openEdit = (w: Worker) => { setSelectedWorker(w); setDialogOpen(true); };
+    const openHoras = (w: Worker) => setHorasWorker(w);
+    const openAnotaciones = (w: Worker) => setAnotacionesWorker(w);
 
     const handleDelete = async () => {
         if (!deleteId) return;
@@ -79,6 +82,19 @@ export default function TrabajadoresPage() {
                 onCancel={() => setDeleteId(null)}
             />
 
+            <AnotacionesModal
+                open={!!anotacionesWorker}
+                worker={anotacionesWorker}
+                onClose={() => setAnotacionesWorker(null)}
+                onSaved={loadWorkers}
+            />
+            <RegistroHorasModal
+                open={!!horasWorker}
+                worker={horasWorker}
+                onClose={() => setHorasWorker(null)}
+                onSaved={loadWorkers}
+            />
+
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
                     <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">Trabajadores</h1>
@@ -116,24 +132,9 @@ export default function TrabajadoresPage() {
                                     <p className="text-xs text-gray-500 dark:text-gray-400">{worker.rut}</p>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-2 shrink-0">
-                                <Badge variant="outline" className={worker.estado === 'Activo' ? 'bg-green-100 text-green-700 border-green-200' : 'bg-gray-100 text-gray-700'}>
-                                    {worker.estado}
-                                </Badge>
-                                <DropdownMenu>
-                                    <DropdownMenuTrigger asChild>
-                                        <Button variant="ghost" className="h-9 w-9 p-0 dark:text-gray-400"><MoreHorizontal className="h-4 w-4" /></Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent align="end">
-                                        <DropdownMenuItem className="cursor-pointer" onClick={() => openEdit(worker)}>
-                                            <Edit className="mr-2 h-4 w-4 text-blue-500" />Editar Perfil
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem className="cursor-pointer text-red-600 focus:text-red-600" onClick={() => setDeleteId(worker.id)}>
-                                            <Trash2 className="mr-2 h-4 w-4" />Eliminar
-                                        </DropdownMenuItem>
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
-                            </div>
+                            <Badge variant="outline" className={worker.estado === 'Activo' ? 'bg-green-100 text-green-700 border-green-200' : 'bg-gray-100 text-gray-700'}>
+                                {worker.estado}
+                            </Badge>
                         </div>
                         <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
                             <div>
@@ -156,6 +157,20 @@ export default function TrabajadoresPage() {
                                 )}
                             </div>
                         )}
+                        <div className="mt-3 flex items-center gap-2 border-t border-gray-100 dark:border-gray-700/40 pt-3">
+                            <Button variant="outline" size="sm" className="flex-1 dark:border-gray-600 dark:text-gray-300" onClick={() => openEdit(worker)}>
+                                <Edit className="mr-1.5 h-3.5 w-3.5 text-blue-500" />Editar
+                            </Button>
+                            <Button variant="ghost" size="icon" className="h-9 w-9 text-gray-500 dark:text-gray-400" title="Registro de horas" onClick={() => openHoras(worker)}>
+                                <Clock className="h-4 w-4" />
+                            </Button>
+                            <Button variant="ghost" size="icon" className="h-9 w-9 text-gray-500 dark:text-gray-400" title="Anotaciones" onClick={() => openAnotaciones(worker)}>
+                                <FileText className="h-4 w-4" />
+                            </Button>
+                            <Button variant="ghost" size="icon" className="h-9 w-9 text-red-500 dark:text-red-400" title="Eliminar" onClick={() => setDeleteId(worker.id)}>
+                                <Trash2 className="h-4 w-4" />
+                            </Button>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -222,19 +237,20 @@ export default function TrabajadoresPage() {
                                     </Badge>
                                 </TableCell>
                                 <TableCell className="text-right">
-                                    <DropdownMenu>
-                                        <DropdownMenuTrigger asChild>
-                                            <Button variant="ghost" className="h-9 w-9 p-0 dark:text-gray-400 dark:hover:text-gray-100"><MoreHorizontal className="h-4 w-4" /></Button>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent align="end">
-                                            <DropdownMenuItem className="cursor-pointer" onClick={() => openEdit(worker)}>
-                                                <Edit className="mr-2 h-4 w-4 text-blue-500" />Editar Perfil
-                                            </DropdownMenuItem>
-                                            <DropdownMenuItem className="cursor-pointer text-red-600 focus:text-red-600" onClick={() => setDeleteId(worker.id)}>
-                                                <Trash2 className="mr-2 h-4 w-4" />Eliminar
-                                            </DropdownMenuItem>
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
+                                    <div className="flex items-center justify-end gap-1">
+                                        <Button variant="ghost" size="icon" className="h-9 w-9 text-gray-500 dark:text-gray-400 hover:text-indigo-600" title="Registro de horas" onClick={() => openHoras(worker)}>
+                                            <Clock className="h-4 w-4" />
+                                        </Button>
+                                        <Button variant="ghost" size="icon" className="h-9 w-9 text-gray-500 dark:text-gray-400 hover:text-indigo-600" title="Anotaciones" onClick={() => openAnotaciones(worker)}>
+                                            <FileText className="h-4 w-4" />
+                                        </Button>
+                                        <Button variant="ghost" size="icon" className="h-9 w-9 text-blue-500 hover:text-blue-700" title="Editar" onClick={() => openEdit(worker)}>
+                                            <Edit className="h-4 w-4" />
+                                        </Button>
+                                        <Button variant="ghost" size="icon" className="h-9 w-9 text-red-500 hover:text-red-700 dark:text-red-400" title="Eliminar" onClick={() => setDeleteId(worker.id)}>
+                                            <Trash2 className="h-4 w-4" />
+                                        </Button>
+                                    </div>
                                 </TableCell>
                             </TableRow>
                         ))}

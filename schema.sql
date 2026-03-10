@@ -74,6 +74,14 @@ create table desmontajes (
   created_at timestamptz default now()
 );
 
+-- Tabla de Inventario Externo
+create table inventario_externo (
+  id text primary key,
+  data jsonb not null,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+
 -- ==========================================================================================
 -- 2. SEGURIDAD DE NIVEL DE FILA (RLS)
 -- ==========================================================================================
@@ -87,12 +95,13 @@ alter table workers enable row level security;
 alter table clients enable row level security;
 alter table montajes enable row level security;
 alter table desmontajes enable row level security;
+alter table inventario_externo enable row level security;
 
 -- ==========================================================================================
 -- 3. POLÍTICAS DE ACCESO
 -- ==========================================================================================
 -- Políticas globales restrictivas:
--- Permiten operaciones totales (SELECT, INSERT, UPDATE, DELETE) ÚNICAMENTE 
+-- Permiten operaciones totales (SELECT, INSERT, UPDATE, DELETE) ÚNICAMENTE
 -- a usuarios que hayan iniciado sesión (rol 'authenticated').
 
 create policy "auth_only" on events for all using (auth.role() = 'authenticated');
@@ -102,6 +111,7 @@ create policy "auth_only" on workers for all using (auth.role() = 'authenticated
 create policy "auth_only" on clients for all using (auth.role() = 'authenticated');
 create policy "auth_only" on montajes for all using (auth.role() = 'authenticated');
 create policy "auth_only" on desmontajes for all using (auth.role() = 'authenticated');
+create policy "auth_only" on inventario_externo for all using (auth.role() = 'authenticated');
 
 -- ==========================================================================================
 -- FIN DEL SCRIPT

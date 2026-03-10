@@ -30,7 +30,9 @@ export function validarRut(rut: string): boolean {
 export function formatDate(iso: string): string {
   if (!iso) return '';
   try {
-    return new Date(iso).toLocaleDateString('es-CL', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    // Date-only strings (YYYY-MM-DD) must be parsed as local time; Safari treats them as UTC otherwise
+    const normalized = /^\d{4}-\d{2}-\d{2}$/.test(iso) ? iso + 'T00:00:00' : iso;
+    return new Date(normalized).toLocaleDateString('es-CL', { day: '2-digit', month: '2-digit', year: 'numeric' });
   } catch {
     return iso;
   }

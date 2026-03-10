@@ -126,11 +126,11 @@ export default function FichaPage() {
                         <div>
                             <h3 className="ficha-section-title text-[10px] font-bold text-gray-500 uppercase tracking-wider border-b pb-1 mb-1.5">Fechas y Horarios</h3>
                             <p className="ficha-section-text text-xs text-gray-900">
-                                <strong>Inicio:</strong> {new Date(event.fechaInicio).toLocaleDateString('es-CL')} / {event.horaInicio || '--'}
+                                <strong>Inicio:</strong> {new Date(event.fechaInicio.substring(0, 10) + 'T00:00:00').toLocaleDateString('es-CL')} / {event.horaInicio || '--'}
                             </p>
                             {event.fechaFin && (
                                 <p className="ficha-section-text text-xs text-gray-900">
-                                    <strong>Término:</strong> {new Date(event.fechaFin).toLocaleDateString('es-CL')} / {event.horaFin || '--'}
+                                    <strong>Término:</strong> {new Date(event.fechaFin.substring(0, 10) + 'T00:00:00').toLocaleDateString('es-CL')} / {event.horaFin || '--'}
                                 </p>
                             )}
                         </div>

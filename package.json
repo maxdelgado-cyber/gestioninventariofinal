@@ -8,10 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "desktop": "next build --webpack && electron .",
-    "build:desktop": "next build --webpack && electron-builder --publish never",
-    "build:desktop:win": "next build --webpack && electron-builder --win --publish never",
-    "build:desktop:mac": "next build --webpack && electron-builder --mac --publish never"
+    "desktop": "cross-env BUILD_TARGET=electron next build --webpack && electron .",
+    "build:desktop": "cross-env BUILD_TARGET=electron next build --webpack && electron-builder --publish never",
+    "build:desktop:win": "cross-env BUILD_TARGET=electron next build --webpack && electron-builder --win --publish never",
+    "build:desktop:mac": "cross-env BUILD_TARGET=electron next build --webpack && electron-builder --mac --publish never"
   },
   "dependencies": {
     "@supabase/ssr": "^0.9.0",
@@ -37,6 +37,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
     "electron": "^40.8.0",
     "electron-builder": "^26.8.1",
     "eslint": "^9",

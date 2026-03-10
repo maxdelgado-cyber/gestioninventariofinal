@@ -28,6 +28,8 @@ export function EventChecklist({ storageKey, eventId, title, defaultItems }: Che
     const [items, setItems] = useState<ChecklistItem[]>([]);
     const [newItemText, setNewItemText] = useState('');
 
+    // Reading localStorage on eventId change is the correct pattern here
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     useEffect(() => {
         const stored = localStorage.getItem(getFullKey());
         if (stored) {
@@ -39,6 +41,7 @@ export function EventChecklist({ storageKey, eventId, title, defaultItems }: Che
                 checked: false
             })));
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [eventId]);
 
     const saveItems = (newItems: ChecklistItem[]) => {

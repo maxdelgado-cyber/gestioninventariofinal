@@ -121,7 +121,7 @@ export default function MontajePage() {
             // 2. Update all assigned inventory items to "En Uso"
             // REMOVED: Database item state should not be forced. Inventory page computers dynamic usage.
             let actualizados = 0;
-            let fallidos = 0;
+            const fallidos = 0;
             if (selectedIds.length > 0) {
                 actualizados = selectedIds.length;
             }
@@ -489,8 +489,8 @@ export default function MontajePage() {
                         <div>
                             <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Día y Horario</p>
                             <p className="text-sm font-medium text-gray-900 mt-1">
-                                {new Date(checklistEvent.fechaInicio).toLocaleDateString('es-CL')}
-                                {checklistEvent.fechaFin && checklistEvent.fechaFin !== checklistEvent.fechaInicio ? ` hasta ${new Date(checklistEvent.fechaFin).toLocaleDateString('es-CL')}` : ''}
+                                {new Date(checklistEvent.fechaInicio.substring(0, 10) + 'T00:00:00').toLocaleDateString('es-CL')}
+                                {checklistEvent.fechaFin && checklistEvent.fechaFin !== checklistEvent.fechaInicio ? ` hasta ${new Date(checklistEvent.fechaFin.substring(0, 10) + 'T00:00:00').toLocaleDateString('es-CL')}` : ''}
                             </p>
                             <p className="text-sm text-gray-600">{checklistEvent.horaInicio || 'Sin hora int.'} - {checklistEvent.horaFin || 'Sin hora fin'}</p>
                         </div>
@@ -770,7 +770,7 @@ export default function MontajePage() {
                     <div className="bg-white dark:bg-[#1a1a2e] border dark:border-gray-700/60 rounded-2xl p-8 text-center space-y-3 shadow-sm">
                         <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full inline-block"><CalendarDays className="h-6 w-6 text-gray-400" /></div>
                         <p className="text-gray-500 dark:text-gray-400">No hay eventos pendientes de montaje.</p>
-                        <p className="text-xs text-gray-400 dark:text-gray-500">Los eventos en estado "Agendado" o "En Montaje" aparecerán aquí.</p>
+                        <p className="text-xs text-gray-400 dark:text-gray-500">Los eventos en estado &quot;Agendado&quot; o &quot;En Montaje&quot; aparecerán aquí.</p>
                     </div>
                 ) : filtered.map((event) => (
                     <div key={event.id} className="bg-white dark:bg-[#1a1a2e] rounded-2xl border border-gray-200 dark:border-gray-700/60 p-4 shadow-sm">
@@ -883,7 +883,7 @@ export default function MontajePage() {
                                 <div className="flex flex-col items-center justify-center space-y-3">
                                     <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full"><CalendarDays className="h-6 w-6 text-gray-400" /></div>
                                     <p>No hay eventos pendientes de montaje.</p>
-                                    <p className="text-xs text-gray-400">Los eventos en estado "Agendado" o "En Montaje" aparecerán aquí.</p>
+                                    <p className="text-xs text-gray-400">Los eventos en estado &quot;Agendado&quot; o &quot;En Montaje&quot; aparecerán aquí.</p>
                                 </div>
                             </TableCell></TableRow>
                         ) : filtered.map((event) => (

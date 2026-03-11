@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { PackageCheck, Search, CalendarDays, CheckCircle2, XCircle, Printer, Users, Truck, ArrowRight, Edit, Copy, ChevronRight, Package } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -47,7 +47,33 @@ export default function MontajePage() {
     const [copySearch, setCopySearch] = useState('');
     const [copySelected, setCopySelected] = useState<Event | null>(null);
 
+    const autoSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const [autoSaveStatus, setAutoSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
+
     useEffect(() => { loadEvents(); }, []);
+
+    const autoSaveEquipment = useCallback(async (event: Event, equipment: Record<string, number>) => {
+        setAutoSaveStatus('saving');
+        try {
+            const finalEquipment = Object.entries(equipment).map(([id, cantidad]) => ({ id, cantidad }));
+            await eventsAPI.update(event.id, { equipamientoAsignado: finalEquipment as any });
+            setAutoSaveStatus('saved');
+            setTimeout(() => setAutoSaveStatus('idle'), 2000);
+        } catch {
+            setAutoSaveStatus('idle');
+        }
+    }, []);
+
+    useEffect(() => {
+        if (!checklistEvent || Object.keys(selectedEquipment).length === 0) return;
+        if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
+        autoSaveTimerRef.current = setTimeout(() => {
+            autoSaveEquipment(checklistEvent, selectedEquipment);
+        }, 2000);
+        return () => {
+            if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
+        };
+    }, [selectedEquipment, checklistEvent, autoSaveEquipment]);
 
     const loadEvents = async () => {
         try {
@@ -153,6 +179,7 @@ export default function MontajePage() {
                 toast.success(`✓ Montaje confirmado. ${totalSeleccionados} equipo(s) asignados al evento.`);
             }
             setChecklistEvent(null);
+            setAutoSaveStatus('idle');
             setIncidentesReportados('');
             loadEvents();
         } catch (e: any) {
@@ -475,9 +502,19 @@ export default function MontajePage() {
                                     <Printer className="mr-2 h-4 w-4" />Imprimir Ficha
                                 </Link>
                             </Button>
-                            <Button variant="ghost" size="sm" onClick={() => setChecklistEvent(null)}>Cerrar</Button>
+                            <Button variant="ghost" size="sm" onClick={() => { setChecklistEvent(null); setAutoSaveStatus('idle'); }}>Cerrar</Button>
                         </div>
                     </div>
+
+                    {autoSaveStatus !== 'idle' && (
+                        <div className={`text-xs font-medium flex items-center gap-1.5 px-3 py-1.5 rounded-full no-print ${autoSaveStatus === 'saving' ? 'bg-yellow-50 text-yellow-600 border border-yellow-200' : 'bg-green-50 text-green-600 border border-green-200'}`}>
+                            {autoSaveStatus === 'saving' ? (
+                                <><span className="animate-spin inline-block h-3 w-3 border-2 border-yellow-400 border-t-transparent rounded-full"></span> Guardando equipamiento...</>
+                            ) : (
+                                <><CheckCircle2 className="h-3.5 w-3.5" /> Equipamiento guardado</>
+                            )}
+                        </div>
+                    )}
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-50/50 dark:bg-gray-800/40 p-4 rounded-lg border border-gray-100 dark:border-gray-700/60 mt-4 mb-6">
                         <div>
@@ -590,7 +627,7 @@ export default function MontajePage() {
                             return (
                                 <label
                                     key={item.id}
-                                    className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors print:mb-2 print:page-inside-avoid print:p-2 print:border-gray-200 print:bg-white print:shadow-none ${isSelected ? 'bg-purple-50 border-purple-200' : 'bg-gray-50/50 border-gray-100 hover:bg-gray-50 print:hidden'} `}
+                                    className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors print:mb-2 print:page-inside-avoid print:p-2 print:border-gray-200 print:bg-white print:shadow-none ${isSelected ? 'bg-purple-50 border-purple-200' : 'bg-white border-gray-200 hover:bg-gray-50 print:hidden'} `}
                                 >
                                     <input
                                         type="checkbox"
@@ -646,7 +683,7 @@ export default function MontajePage() {
 
                                         {item.esContenedor && (
                                             <details className="mt-2 text-[11px] leading-relaxed text-purple-900 group print:block">
-                                                <summary className="cursor-pointer font-bold bg-purple-50/50 border border-purple-100 rounded px-2 py-1 flex items-center justify-between text-[10px] uppercase tracking-wider hover:bg-purple-100 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                                                <summary className="cursor-pointer font-bold bg-purple-50 border border-purple-100 rounded px-2 py-1 flex items-center justify-between text-[10px] uppercase tracking-wider hover:bg-purple-100 transition-colors list-none [&::-webkit-details-marker]:hidden">
                                                     Ver contenido del kit
                                                     <span className="text-purple-600 group-open:rotate-180 transition-transform">▼</span>
                                                 </summary>
@@ -660,7 +697,7 @@ export default function MontajePage() {
                                                                 const qtyPerCase = detalle ? Number(detalle.cantidad) || 1 : 1;
 
                                                                 return refItem ? (
-                                                                    <div key={refId} className="flex items-center justify-between gap-2 py-1 mt-1 border-b border-purple-50/50 pb-1 last:border-0 hover:bg-purple-50/30 px-1 rounded transition-colors">
+                                                                    <div key={refId} className="flex items-center justify-between gap-2 py-1 mt-1 border-b border-purple-50 dark:border-purple-900/20 pb-1 last:border-0 hover:bg-purple-50 dark:hover:bg-purple-900/10 px-1 rounded transition-colors">
                                                                         <span className={refChecked ? 'text-purple-800 font-medium' : 'text-gray-600'}>
                                                                             {refItem.nombre} {qtyPerCase > 1 ? `(Max. ${qtyPerCase} uds)` : ''}
                                                                         </span>
@@ -773,7 +810,7 @@ export default function MontajePage() {
                         <p className="text-xs text-gray-400 dark:text-gray-500">Los eventos en estado &quot;Agendado&quot; o &quot;En Montaje&quot; aparecerán aquí.</p>
                     </div>
                 ) : filtered.map((event) => (
-                    <div key={event.id} className="bg-white dark:bg-[#1a1a2e] rounded-2xl border border-gray-200 dark:border-gray-700/60 p-4 shadow-sm">
+                    <div key={event.id} className={`bg-white dark:bg-[#1a1a2e] rounded-2xl border border-gray-200 dark:border-gray-700/60 p-4 shadow-sm border-l-4 ${event.estado === 'Montado' ? 'border-l-green-500' : event.estado === 'En Montaje' ? 'border-l-orange-400' : 'border-l-blue-500'}`}>
                         <div className="flex items-start justify-between gap-3">
                             <div className="flex-1 min-w-0">
                                 <p className="font-bold text-gray-900 dark:text-gray-100 truncate">{event.nombre}</p>
@@ -887,12 +924,15 @@ export default function MontajePage() {
                                 </div>
                             </TableCell></TableRow>
                         ) : filtered.map((event) => (
-                            <TableRow key={event.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-800/30 dark:border-gray-700/40 transition-colors">
+                            <TableRow key={event.id} className={`hover:bg-gray-50/50 dark:hover:bg-gray-800/30 dark:border-gray-700/40 transition-colors border-l-4 ${event.estado === 'Montado' ? 'border-l-green-500' : event.estado === 'En Montaje' ? 'border-l-orange-400' : 'border-l-blue-500'}`}>
                                 <TableCell className="font-medium">
                                     <div className="flex flex-col">
-                                        <span className="text-gray-900 dark:text-gray-100">{event.nombre}</span>
-                                        <span className="text-xs text-gray-500 dark:text-gray-400">{event.cliente}</span>
-                                        {event.direccion && <span className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{event.direccion}</span>}
+                                        <div className="flex items-center gap-2">
+                                            <span className={`w-2 h-2 rounded-full flex-shrink-0 ${event.estado === 'Montado' ? 'bg-green-500' : event.estado === 'En Montaje' ? 'bg-orange-400' : 'bg-blue-500'}`} />
+                                            <span className="text-gray-900 dark:text-gray-100">{event.nombre}</span>
+                                        </div>
+                                        <span className="text-xs text-gray-500 dark:text-gray-400 pl-4">{event.cliente}</span>
+                                        {event.direccion && <span className="text-xs text-gray-400 dark:text-gray-500 mt-0.5 pl-4">{event.direccion}</span>}
                                     </div>
                                 </TableCell>
                                 <TableCell>

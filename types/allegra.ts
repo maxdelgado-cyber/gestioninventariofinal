@@ -39,6 +39,14 @@ export interface Event {
     incidencias?: string[];
     montajeRealizado: boolean;
     desmontaljeRealizado: boolean;
+    trabajadoresDesmontaje?: string[];
+    vehiculoDesmontajeId?: string;
+    vehiculoDesmontajeNombre?: string;
+    choferDesmontajeId?: string;
+    choferDesmontajeNombre?: string;
+    fechaDesmontaje?: string;
+    horaDesmontajeInicio?: string;
+    horaDesmontajeFin?: string;
     evaluacion?: {
         calificacionGeneral?: number;
         aspectosPositivos?: string;

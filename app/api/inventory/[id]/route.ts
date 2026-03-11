@@ -30,7 +30,9 @@ export async function DELETE(_: NextRequest, { params }: { params: Promise<{ id:
     const activeEvents = (allEvents || []).filter(
         (e: any) => !['Cerrado', 'Cancelado'].includes(e.data?.estado) &&
             Array.isArray(e.data?.equipamientoAsignado) &&
-            e.data.equipamientoAsignado.includes(id)
+            e.data.equipamientoAsignado.some((eq: any) =>
+                    typeof eq === 'string' ? eq === id : eq?.id === id
+                )
     );
     if (activeEvents.length > 0) {
         return NextResponse.json(

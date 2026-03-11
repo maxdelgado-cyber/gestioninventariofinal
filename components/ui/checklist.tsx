@@ -72,19 +72,32 @@ export function EventChecklist({ storageKey, eventId, title, defaultItems }: Che
     const completedCount = items.filter(i => i.checked).length;
     const progress = items.length > 0 ? (completedCount / items.length) * 100 : 0;
 
+    const checkAll = () => {
+        const allChecked = items.every(i => i.checked);
+        saveItems(items.map(i => ({ ...i, checked: !allChecked })));
+    };
+
     return (
-        <Card className="border border-purple-100 shadow-sm mt-4">
-            <div className="bg-purple-50/50 border-b border-purple-100 p-4">
+        <Card className="border border-purple-100 dark:border-purple-900/40 shadow-sm mt-4 dark:bg-gray-800/30">
+            <div className="bg-purple-50 dark:bg-purple-900/20 border-b border-purple-100 dark:border-purple-900/40 p-4">
                 <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-bold text-purple-900 flex items-center gap-2">
-                        <ListTodo className="h-5 w-5 text-purple-600" />
+                    <h3 className="font-bold text-purple-900 dark:text-purple-200 flex items-center gap-2">
+                        <ListTodo className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                         {title}
                     </h3>
-                    <span className="text-xs font-semibold px-2.5 py-1 bg-white rounded-full text-purple-700 border border-purple-200">
-                        {completedCount} / {items.length} completados
-                    </span>
+                    <div className="flex items-center gap-2">
+                        <button
+                            onClick={checkAll}
+                            className="text-xs font-medium px-2.5 py-1 bg-white dark:bg-gray-800 rounded-full text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors"
+                        >
+                            {items.every(i => i.checked) ? 'Desmarcar todos' : 'Marcar todos'}
+                        </button>
+                        <span className="text-xs font-semibold px-2.5 py-1 bg-white dark:bg-gray-800 rounded-full text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
+                            {completedCount} / {items.length} completados
+                        </span>
+                    </div>
                 </div>
-                <Progress value={progress} className="h-2 bg-purple-100" />
+                <Progress value={progress} className="h-2 bg-purple-100 dark:bg-purple-900/30" />
             </div>
             <CardContent className="p-4">
                 <div className="space-y-3 mb-4">

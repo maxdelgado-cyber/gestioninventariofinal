@@ -352,27 +352,36 @@ export default function InventarioPage() {
                                             )}
                                         </div>
                                         <span className="text-xs text-gray-500">{item.marca} {item.modelo}</span>
-                                        {item.esContenedor && expandedIds.includes(item.id) && item.contenidoInterno?.descripcion && (
-                                            <div className="mt-2 pl-6 py-2 border-l-2 border-purple-100 bg-purple-50/30 rounded-r-md">
-                                                <p className="text-[11px] font-bold text-purple-800 uppercase tracking-wider mb-1 px-2">Contenido:</p>
-                                                <div className="text-[11px] text-purple-900 bg-white/50 p-2 rounded border border-purple-100/50">
-                                                    {(item.contenidoInterno?.itemsDetalle && item.contenidoInterno.itemsDetalle.length > 0) ? (
-                                                        <ul className="space-y-1 mb-2 pl-2">
-                                                            {item.contenidoInterno.itemsDetalle.map(d => {
-                                                                const relatedItem = items.find((i: InventoryItem) => i.id === d.id);
-                                                                return (
-                                                                    <li key={d.id} className="flex items-center gap-2">
-                                                                        <span className="font-semibold text-purple-700">{d.cantidad}x</span>
-                                                                        <span className="text-gray-700">{relatedItem?.nombre || 'Ítem no encontrado'}</span>
-                                                                    </li>
-                                                                );
-                                                            })}
-                                                        </ul>
-                                                    ) : null}
+                                        {item.esContenedor && expandedIds.includes(item.id) && (
+                                            <div className="mt-2 pl-6 py-2 border-l-2 border-purple-100 dark:border-purple-900/30 bg-purple-50/30 dark:bg-purple-900/10 rounded-r-md">
+                                                <p className="text-[11px] font-bold text-purple-800 dark:text-purple-300 uppercase tracking-wider mb-1 px-2">Contenido:</p>
+                                                <div className="text-[11px] text-purple-900 dark:text-purple-200 bg-white/50 dark:bg-gray-800/40 p-2 rounded border border-purple-100/50 dark:border-purple-900/20">
+                                                    {(() => {
+                                                        // Use itemsRef as source of truth; get quantities from itemsDetalle
+                                                        const refs = item.contenidoInterno?.itemsRef || [];
+                                                        const detalleMap = new Map((item.contenidoInterno?.itemsDetalle || []).map(d => [d.id, d.cantidad]));
+                                                        if (refs.length > 0) {
+                                                            return (
+                                                                <ul className="space-y-1 mb-2 pl-2">
+                                                                    {refs.map(refId => {
+                                                                        const relatedItem = items.find((i: InventoryItem) => i.id === refId);
+                                                                        const cantidad = detalleMap.get(refId) ?? 1;
+                                                                        return (
+                                                                            <li key={refId} className="flex items-center gap-2">
+                                                                                <span className="font-semibold text-purple-700">{cantidad}x</span>
+                                                                                <span className="text-gray-700">{relatedItem?.nombre || 'Ítem no encontrado'}</span>
+                                                                            </li>
+                                                                        );
+                                                                    })}
+                                                                </ul>
+                                                            );
+                                                        }
+                                                        return null;
+                                                    })()}
                                                     {item.contenidoInterno?.descripcion && (
-                                                        <p className="whitespace-pre-wrap font-mono mt-1 pt-1 border-t border-purple-100/50 italic text-gray-500">{item.contenidoInterno.descripcion}</p>
+                                                        <p className="whitespace-pre-wrap font-mono mt-1 pt-1 border-t border-purple-100/50 dark:border-purple-900/20 italic text-gray-500">{item.contenidoInterno.descripcion}</p>
                                                     )}
-                                                    {(!item.contenidoInterno?.itemsDetalle?.length && !item.contenidoInterno?.descripcion) && (
+                                                    {(!item.contenidoInterno?.itemsRef?.length && !item.contenidoInterno?.descripcion) && (
                                                         <span className="text-gray-400 italic">No hay ítems registrados en este case.</span>
                                                     )}
                                                 </div>

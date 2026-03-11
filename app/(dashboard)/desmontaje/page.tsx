@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { PackageX, Search, CalendarDays, CheckCircle2, XCircle, ArrowDownCircle, Package, Printer } from 'lucide-react';
+import { PackageX, Search, CalendarDays, CheckCircle2, Package, Printer, Users, Truck, Clock } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,9 +9,14 @@ import { Badge } from '@/components/ui/badge';
 import {
     Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table';
-import { Event, InventoryItem } from '@/types/allegra';
+import {
+    Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+} from '@/components/ui/select';
+import { Event, InventoryItem, Worker, Vehicle } from '@/types/allegra';
 import { eventsAPI } from '@/lib/api/events';
 import { inventoryAPI } from '@/lib/api/inventory';
+import { workersAPI } from '@/lib/api/workers';
+import { vehiclesAPI } from '@/lib/api/vehicles';
 import { toast } from 'sonner';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { EventChecklist } from '@/components/ui/checklist';
@@ -25,6 +30,8 @@ const DESMONTAJE_ITEMS = [
 export default function DesmontajePage() {
     const [events, setEvents] = useState<Event[]>([]);
     const [allInventory, setAllInventory] = useState<InventoryItem[]>([]);
+    const [allWorkers, setAllWorkers] = useState<Worker[]>([]);
+    const [allVehicles, setAllVehicles] = useState<Vehicle[]>([]);
     const [loading, setLoading] = useState(true);
     const [actionLoading, setActionLoading] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState('');
@@ -32,23 +39,64 @@ export default function DesmontajePage() {
     const [checklistEvent, setChecklistEvent] = useState<Event | null>(null);
     const [incidentes, setIncidentes] = useState('');
 
+    // Desmontaje logistics state
+    const [desmontajeWorkers, setDesmontajeWorkers] = useState<string[]>([]);
+    const [desmontajeVehicleId, setDesmontajeVehicleId] = useState('');
+    const [desmontajeVehicleName, setDesmontajeVehicleName] = useState('');
+    const [desmontajeChoferId, setDesmontajeChoferId] = useState('');
+    const [desmontajeConductorName, setDesmontajeConductorName] = useState('');
+    const [fechaDesmontaje, setFechaDesmontaje] = useState('');
+    const [horaDesmontajeInicio, setHoraDesmontajeInicio] = useState('');
+    const [horaDesmontajeFin, setHoraDesmontajeFin] = useState('');
+
     useEffect(() => { loadAll(); }, []);
 
     const loadAll = async () => {
         try {
             setLoading(true);
-            const [evts, inv] = await Promise.all([eventsAPI.getAll(), inventoryAPI.getAll()]);
-            // Show only events that are "Montado" or "En Desmontaje" (ready to be returned)
+            const [evts, inv, wrk, veh] = await Promise.all([
+                eventsAPI.getAll(),
+                inventoryAPI.getAll(),
+                workersAPI.getAll(),
+                vehiclesAPI.getAll(),
+            ]);
             const relevant = (evts || []).filter(e => ['Montado', 'En Desmontaje', 'Cerrado'].includes(e.estado));
             setEvents(relevant);
             setAllInventory(inv || []);
+            setAllWorkers(wrk || []);
+            setAllVehicles(veh || []);
         } catch { toast.error('Error al cargar datos de desmontaje'); }
         finally { setLoading(false); }
     };
 
+    const openChecklist = (event: Event) => {
+        setChecklistEvent(event);
+        setDesmontajeWorkers(event.trabajadoresDesmontaje || []);
+        setDesmontajeVehicleId(event.vehiculoDesmontajeId || '');
+        setDesmontajeVehicleName(event.vehiculoDesmontajeNombre || '');
+        setDesmontajeChoferId(event.choferDesmontajeId || '');
+        setDesmontajeConductorName(event.choferDesmontajeNombre || '');
+        setFechaDesmontaje(event.fechaDesmontaje || '');
+        setHoraDesmontajeInicio(event.horaDesmontajeInicio || '');
+        setHoraDesmontajeFin(event.horaDesmontajeFin || '');
+    };
+
+    const closeChecklist = () => {
+        setChecklistEvent(null);
+        setDesmontajeWorkers([]);
+        setDesmontajeVehicleId('');
+        setDesmontajeVehicleName('');
+        setDesmontajeChoferId('');
+        setDesmontajeConductorName('');
+        setFechaDesmontaje('');
+        setHoraDesmontajeInicio('');
+        setHoraDesmontajeFin('');
+        setIncidentes('');
+    };
+
     const ejecutarDesmontaje = async (event: Event, incidentesReportados: string = '') => {
         setConfirmEvent(null);
-        setChecklistEvent(null);
+        closeChecklist();
         setActionLoading(event.id);
         try {
             let returnedCount = 0;
@@ -60,15 +108,9 @@ export default function DesmontajePage() {
                     event.equipamientoAsignado.map(async (assignedItem) => {
                         const itemId = typeof assignedItem === 'string' ? assignedItem : assignedItem.id;
                         const quantityUsed = typeof assignedItem === 'string' ? 1 : assignedItem.cantidad;
-
                         const item = allInventory.find(i => i.id === itemId);
-                        if (!item) {
-                            console.warn(`[Desmontaje] Item ${itemId} no encontrado en inventario local`);
-                            throw new Error(`Item ${itemId} no encontrado`);
-                        }
-
+                        if (!item) throw new Error(`Item ${itemId} no encontrado`);
                         if (item.esInsumo) {
-                            // Insumos: reduce quantity by what was used
                             const newQty = Math.max(0, item.cantidad - quantityUsed);
                             await inventoryAPI.update(itemId, {
                                 cantidad: newQty,
@@ -76,21 +118,22 @@ export default function DesmontajePage() {
                             });
                             consumedCount += quantityUsed;
                         } else {
-                            // Regular equipment: no DB state update needed as usage is dynamically computed
                             returnedCount += quantityUsed;
                         }
                     })
                 );
                 fallidos = results.filter(r => r.status === 'rejected').length;
-                if (fallidos > 0) {
-                    console.warn(`[Desmontaje] ${fallidos} equipo(s) fallaron al actualizarse en DB`);
-                }
             }
 
-            // Mark event as closed and persist incidents
             const updatePayload: Record<string, any> = {
                 desmontaljeRealizado: true,
                 estado: 'Cerrado',
+                trabajadoresDesmontaje: desmontajeWorkers,
+                ...(desmontajeVehicleId ? { vehiculoDesmontajeId: desmontajeVehicleId, vehiculoDesmontajeNombre: desmontajeVehicleName } : {}),
+                ...(desmontajeChoferId ? { choferDesmontajeId: desmontajeChoferId, choferDesmontajeNombre: desmontajeConductorName } : {}),
+                ...(fechaDesmontaje ? { fechaDesmontaje } : {}),
+                ...(horaDesmontajeInicio ? { horaDesmontajeInicio } : {}),
+                ...(horaDesmontajeFin ? { horaDesmontajeFin } : {}),
             };
             if (incidentesReportados.trim()) {
                 updatePayload.incidencias = incidentesReportados.trim().split('\n').map(s => s.trim()).filter(Boolean);
@@ -99,7 +142,6 @@ export default function DesmontajePage() {
             try {
                 await eventsAPI.update(event.id, updatePayload);
             } catch (evtErr: any) {
-                console.error('[Desmontaje] Error actualizando evento:', evtErr);
                 toast.error(`Error al actualizar el evento: ${evtErr?.message || 'No se pudo guardar'}. Intente de nuevo.`);
                 return;
             }
@@ -115,9 +157,7 @@ export default function DesmontajePage() {
                 toast.success(`✓ Desmontaje completado. ${parts.join(', ')}.`);
             }
             loadAll();
-            setIncidentes('');
         } catch (e: any) {
-            console.error('[Desmontaje] Error general:', e);
             toast.error(e?.message || 'Error al confirmar el desmontaje');
         } finally {
             setActionLoading(null);
@@ -142,9 +182,10 @@ export default function DesmontajePage() {
         e.cliente.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    // AL-6 FIX: Exclude already-closed events from pending list to prevent double desmontaje
     const pending = filtered.filter(e => !e.desmontaljeRealizado && e.estado !== 'Cerrado');
     const closed = filtered.filter(e => e.desmontaljeRealizado || e.estado === 'Cerrado');
+
+    const activeWorkers = allWorkers.filter(w => w.estado === 'Activo');
 
     return (
         <div className="space-y-6">
@@ -168,24 +209,165 @@ export default function DesmontajePage() {
                 </div>
             </div>
 
-
-
             {checklistEvent && (
                 <div className="bg-white dark:bg-gray-900 border-2 border-orange-200 dark:border-orange-900/60 rounded-xl p-5 shadow-sm space-y-4">
+                    {/* Header */}
                     <div className="flex items-center justify-between">
                         <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-                            Desmontaje para: <span className="text-orange-600">{checklistEvent.nombre}</span>
+                            Desmontaje: <span className="text-orange-600">{checklistEvent.nombre}</span>
                         </h2>
-                        <div className="flex gap-2 no-print">
+                        <div className="flex gap-2">
                             <Button variant="outline" size="sm" asChild>
                                 <Link href={`/ficha/${checklistEvent.id}?type=desmontaje`} target="_blank">
                                     <Printer className="mr-2 h-4 w-4" />Imprimir Ficha
                                 </Link>
                             </Button>
-                            <Button variant="ghost" size="sm" onClick={() => setChecklistEvent(null)}>Cancelar</Button>
+                            <Button variant="ghost" size="sm" onClick={closeChecklist}>Cancelar</Button>
                         </div>
                     </div>
 
+                    {/* ── Logistics form ── */}
+                    <div className="bg-orange-50/60 dark:bg-orange-900/10 border border-orange-100 dark:border-orange-900/30 rounded-xl p-4 space-y-4">
+                        <h3 className="text-xs font-bold text-orange-800 dark:text-orange-300 uppercase tracking-wider flex items-center gap-2">
+                            <Truck className="h-3.5 w-3.5" />Logística del Desmontaje
+                        </h3>
+
+                        {/* Date + Times */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div>
+                                <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1 block flex items-center gap-1">
+                                    <CalendarDays className="h-3 w-3" />Fecha de Desmontaje
+                                </label>
+                                <Input
+                                    type="date"
+                                    value={fechaDesmontaje}
+                                    onChange={(e) => setFechaDesmontaje(e.target.value)}
+                                    className="bg-white dark:bg-gray-800 h-9"
+                                />
+                            </div>
+                            <div>
+                                <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1 block flex items-center gap-1">
+                                    <Clock className="h-3 w-3" />Hora Inicio
+                                </label>
+                                <Input
+                                    type="time"
+                                    value={horaDesmontajeInicio}
+                                    onChange={(e) => setHoraDesmontajeInicio(e.target.value)}
+                                    className="bg-white dark:bg-gray-800 h-9"
+                                />
+                            </div>
+                            <div>
+                                <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1 block flex items-center gap-1">
+                                    <Clock className="h-3 w-3" />Hora Término
+                                </label>
+                                <Input
+                                    type="time"
+                                    value={horaDesmontajeFin}
+                                    onChange={(e) => setHoraDesmontajeFin(e.target.value)}
+                                    className="bg-white dark:bg-gray-800 h-9"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Vehicle + Driver */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1 block">
+                                    Vehículo de Transporte
+                                </label>
+                                <Select
+                                    value={desmontajeVehicleId || '_none'}
+                                    onValueChange={(val) => {
+                                        if (val === '_none') {
+                                            setDesmontajeVehicleId('');
+                                            setDesmontajeVehicleName('');
+                                        } else {
+                                            const v = allVehicles.find(v => v.id === val);
+                                            if (v) { setDesmontajeVehicleId(v.id); setDesmontajeVehicleName(v.nombre); }
+                                        }
+                                    }}
+                                >
+                                    <SelectTrigger className="bg-white dark:bg-gray-800 h-9">
+                                        <SelectValue placeholder="Sin vehículo" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="_none">Sin vehículo</SelectItem>
+                                        {allVehicles.map(v => (
+                                            <SelectItem key={v.id} value={v.id}>
+                                                {v.nombre} — {v.patente}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                            <div>
+                                <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1 block">
+                                    Conductor
+                                </label>
+                                <Select
+                                    value={desmontajeChoferId || '_none'}
+                                    onValueChange={(val) => {
+                                        if (val === '_none') {
+                                            setDesmontajeChoferId('');
+                                            setDesmontajeConductorName('');
+                                        } else {
+                                            const w = allWorkers.find(w => w.id === val);
+                                            if (w) { setDesmontajeChoferId(w.id); setDesmontajeConductorName(`${w.nombre} ${w.apellido}`); }
+                                        }
+                                    }}
+                                >
+                                    <SelectTrigger className="bg-white dark:bg-gray-800 h-9">
+                                        <SelectValue placeholder="Sin conductor asignado" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="_none">Sin conductor</SelectItem>
+                                        {activeWorkers.map(w => (
+                                            <SelectItem key={w.id} value={w.id}>
+                                                {w.nombre} {w.apellido}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                        </div>
+
+                        {/* Workers multi-select */}
+                        <div>
+                            <label className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-2 block flex items-center gap-1.5">
+                                <Users className="h-3.5 w-3.5" />Trabajadores Asignados al Desmontaje
+                                {desmontajeWorkers.length > 0 && (
+                                    <span className="bg-orange-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">{desmontajeWorkers.length}</span>
+                                )}
+                            </label>
+                            {activeWorkers.length > 0 ? (
+                                <div className="flex flex-wrap gap-2">
+                                    {activeWorkers.map(w => {
+                                        const isSelected = desmontajeWorkers.includes(w.id);
+                                        return (
+                                            <button
+                                                key={w.id}
+                                                type="button"
+                                                onClick={() => setDesmontajeWorkers(prev =>
+                                                    isSelected ? prev.filter(id => id !== w.id) : [...prev, w.id]
+                                                )}
+                                                className={`text-xs px-3 py-1.5 rounded-full border transition-colors cursor-pointer ${
+                                                    isSelected
+                                                        ? 'bg-orange-600 text-white border-orange-600'
+                                                        : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:border-orange-400'
+                                                }`}
+                                            >
+                                                {w.nombre} {w.apellido}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            ) : (
+                                <p className="text-xs text-gray-400">No hay trabajadores activos registrados.</p>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Checklist */}
                     <EventChecklist
                         storageKey="checklist_desmontaje"
                         eventId={checklistEvent.id}
@@ -205,6 +387,7 @@ export default function DesmontajePage() {
                         ]}
                     />
 
+                    {/* Incidents */}
                     <div className="space-y-2 pt-2">
                         <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">Reporte de Incidentes (Opcional)</label>
                         <textarea
@@ -215,20 +398,17 @@ export default function DesmontajePage() {
                         />
                     </div>
 
+                    {/* Action buttons */}
                     <div className="flex justify-between items-center pt-4 border-t border-gray-100 mt-4">
                         <Button
                             size="lg"
                             variant="outline"
                             className="bg-green-50 text-green-700 border-green-200 hover:bg-green-100 hover:text-green-800"
-                            onClick={() => {
-                                toast.success("Marcando todos los ítems como correctos.");
-                                ejecutarDesmontaje(checklistEvent, '');
-                            }}
+                            onClick={() => ejecutarDesmontaje(checklistEvent, '')}
                         >
                             <CheckCircle2 className="mr-2 h-5 w-5" />
                             Todo Correcto (Retorno Exprés)
                         </Button>
-
                         <Button
                             size="lg"
                             className="bg-orange-600 hover:bg-orange-700 text-white"
@@ -261,7 +441,7 @@ export default function DesmontajePage() {
                             const regularCount = invItems.filter(i => !i.esInsumo).length;
                             const insumoCount = invItems.filter(i => i.esInsumo).length;
                             return (
-                                <div key={event.id} className="bg-white dark:bg-[#1a1a2e] rounded-2xl border border-orange-200 dark:border-orange-900/50 p-4 shadow-sm">
+                                <div key={event.id} className="bg-white dark:bg-[#1a1a2e] rounded-2xl border border-orange-200 dark:border-orange-900/50 border-l-4 border-l-orange-500 p-4 shadow-sm">
                                     <div className="flex items-start justify-between gap-2">
                                         <div className="flex-1 min-w-0">
                                             <p className="font-bold text-gray-900 dark:text-gray-100 truncate">{event.nombre}</p>
@@ -284,7 +464,7 @@ export default function DesmontajePage() {
                                         <Button
                                             size="sm"
                                             disabled={actionLoading === event.id || !!checklistEvent}
-                                            onClick={() => setChecklistEvent(event)}
+                                            onClick={() => openChecklist(event)}
                                             className="flex-1 h-11 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white"
                                         >
                                             <PackageX className="mr-1.5 h-3.5 w-3.5" />Recepción
@@ -313,11 +493,14 @@ export default function DesmontajePage() {
                                     const regularCount = items.filter(i => !i.esInsumo).length;
                                     const insumoCount = items.filter(i => i.esInsumo).length;
                                     return (
-                                        <TableRow key={event.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-800/30 dark:border-gray-700/40 transition-colors">
+                                        <TableRow key={event.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-800/30 dark:border-gray-700/40 transition-colors border-l-4 border-l-orange-500">
                                             <TableCell className="font-medium">
                                                 <div className="flex flex-col">
-                                                    <span className="text-gray-900 dark:text-gray-100">{event.nombre}</span>
-                                                    <span className="text-xs text-gray-500 dark:text-gray-400">{event.cliente}</span>
+                                                    <div className="flex items-center gap-2">
+                                                        <span className="w-2 h-2 rounded-full bg-orange-500 flex-shrink-0" />
+                                                        <span className="text-gray-900 dark:text-gray-100">{event.nombre}</span>
+                                                    </div>
+                                                    <span className="text-xs text-gray-500 dark:text-gray-400 pl-4">{event.cliente}</span>
                                                 </div>
                                             </TableCell>
                                             <TableCell>
@@ -347,18 +530,16 @@ export default function DesmontajePage() {
                                                 <div className="flex items-center justify-end gap-2">
                                                     <Button asChild size="sm" variant="outline" className="h-8 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50">
                                                         <Link href={`/ficha/${event.id}?type=desmontaje`} target="_blank">
-                                                            <Printer className="mr-1.5 h-3.5 w-3.5" />
-                                                            Ficha
+                                                            <Printer className="mr-1.5 h-3.5 w-3.5" />Ficha
                                                         </Link>
                                                     </Button>
                                                     <Button
                                                         size="sm"
                                                         disabled={actionLoading === event.id || !!checklistEvent}
-                                                        onClick={() => setChecklistEvent(event)}
+                                                        onClick={() => openChecklist(event)}
                                                         className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white h-8"
                                                     >
-                                                        <PackageX className="mr-1.5 h-3.5 w-3.5" />
-                                                        Recepción
+                                                        <PackageX className="mr-1.5 h-3.5 w-3.5" />Recepción
                                                     </Button>
                                                 </div>
                                             </TableCell>
@@ -421,8 +602,7 @@ export default function DesmontajePage() {
                                                 <span className="text-xs text-gray-400 italic">Retorno completado ✓</span>
                                                 <Button asChild size="sm" variant="outline" className="h-8 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-400 hover:bg-gray-50">
                                                     <Link href={`/ficha/${event.id}?type=desmontaje`} target="_blank">
-                                                        <Printer className="mr-1.5 h-3.5 w-3.5" />
-                                                        Ficha
+                                                        <Printer className="mr-1.5 h-3.5 w-3.5" />Ficha
                                                     </Link>
                                                 </Button>
                                             </div>

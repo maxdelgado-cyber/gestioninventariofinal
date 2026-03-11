@@ -83,6 +83,13 @@ export default function FichaPage() {
         .map(wId => workers.find(w => w.id === wId)?.nombre || 'Desconocido')
         .join(', ');
 
+    const desmontajeWorkersList = (event.trabajadoresDesmontaje || [])
+        .map(wId => {
+            const w = workers.find(w => w.id === wId);
+            return w ? `${w.nombre} ${w.apellido}` : 'Desconocido';
+        })
+        .join(', ');
+
     return (
         <div className="bg-gray-100 min-h-screen pb-10">
             {/* Action bar — hidden on print */}
@@ -156,6 +163,45 @@ export default function FichaPage() {
                     </div>
                 </div>
 
+                {/* ── Desmontaje logistics (only for desmontaje type) ── */}
+                {type === 'desmontaje' && (event.fechaDesmontaje || (event.trabajadoresDesmontaje && event.trabajadoresDesmontaje.length > 0) || event.vehiculoDesmontajeNombre) && (
+                    <div className="mb-6 border-2 border-orange-200 rounded-lg overflow-hidden">
+                        <div className="bg-orange-100 px-4 py-2">
+                            <h3 className="text-[11px] font-bold text-orange-800 uppercase tracking-wider">Equipo y Horario de Desmontaje</h3>
+                        </div>
+                        <div className="p-4 grid grid-cols-2 gap-4 bg-orange-50/40">
+                            {event.fechaDesmontaje && (
+                                <div>
+                                    <p className="ficha-section-title text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Fecha y Horario</p>
+                                    <p className="ficha-section-text text-sm font-bold text-gray-900">
+                                        {new Date(event.fechaDesmontaje.substring(0, 10) + 'T00:00:00').toLocaleDateString('es-CL')}
+                                    </p>
+                                    {event.horaDesmontajeInicio && (
+                                        <p className="ficha-section-text text-xs text-gray-700">
+                                            {event.horaDesmontajeInicio}{event.horaDesmontajeFin ? ` — ${event.horaDesmontajeFin} hrs` : ' hrs'}
+                                        </p>
+                                    )}
+                                </div>
+                            )}
+                            {event.vehiculoDesmontajeNombre && (
+                                <div>
+                                    <p className="ficha-section-title text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Transporte</p>
+                                    <p className="ficha-section-text text-sm font-bold text-gray-900">{event.vehiculoDesmontajeNombre}</p>
+                                    {event.choferDesmontajeNombre && (
+                                        <p className="ficha-section-text text-xs text-gray-700">Conductor: {event.choferDesmontajeNombre}</p>
+                                    )}
+                                </div>
+                            )}
+                            {desmontajeWorkersList && (
+                                <div className="col-span-2 border-t border-orange-200 pt-3">
+                                    <p className="ficha-section-title text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Personal de Desmontaje</p>
+                                    <p className="ficha-section-text text-xs text-gray-800">{desmontajeWorkersList}</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                )}
+
                 {/* ── Equipment table ── */}
                 <div>
                     <h3 className="ficha-equipment-title text-base font-bold text-gray-900 border-b-2 border-gray-200 pb-1.5 mb-3">
@@ -220,12 +266,16 @@ export default function FichaPage() {
                 <div className="ficha-signatures mt-14 pt-6 grid grid-cols-2 gap-16 break-inside-avoid">
                     <div className="text-center">
                         <div className="border-t border-gray-400 w-full mb-2"></div>
-                        <p className="font-bold text-gray-800 text-sm">Entregado por (Firma)</p>
+                        <p className="font-bold text-gray-800 text-sm">
+                            {type === 'desmontaje' ? 'Responsable Retiro (Firma)' : 'Entregado por (Firma)'}
+                        </p>
                         <p className="text-xs text-gray-500">Nombre / Cargo</p>
                     </div>
                     <div className="text-center">
                         <div className="border-t border-gray-400 w-full mb-2"></div>
-                        <p className="font-bold text-gray-800 text-sm">Recibido por (Firma)</p>
+                        <p className="font-bold text-gray-800 text-sm">
+                            {type === 'desmontaje' ? 'Recibido en Bodega (Firma)' : 'Recibido por (Firma)'}
+                        </p>
                         <p className="text-xs text-gray-500">Nombre / Cargo</p>
                     </div>
                 </div>

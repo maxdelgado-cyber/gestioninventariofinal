@@ -17,7 +17,14 @@
       "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && npm run lint 2>&1 | grep -v \"BABEL\" | grep \"error\")",
       "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && npm run lint 2>&1 | grep -v \"BABEL\" | grep -B1 \"require\\(\\)\" | grep \"^C:\" | sort -u)",
       "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && npm run lint 2>&1 | grep -v \"BABEL\" | tail -5)",
-      "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && npm run lint 2>&1 | grep -v \"BABEL\" | grep \"error\" | grep -v \"warning\")"
+      "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && npm run lint 2>&1 | grep -v \"BABEL\" | grep \"error\" | grep -v \"warning\")",
+      "Skill(clean-code)",
+      "Bash(cd \"C:\\\\Users\\\\MaxDe\\\\OneDrive\\\\Escritorio\\\\gestion inventario paomax\" && npx vercel deploy --prod 2>&1)",
+      "Read(//c/Users/MaxDe/OneDrive/Escritorio/ENTREGA_ALLEGRA/**)",
+      "Bash(mkdir -p capturas)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(cd \"C:/Users/MaxDe/OneDrive/Escritorio/ENTREGA_ALLEGRA\" && npx playwright install chromium 2>&1 | tail -3)"
     ]
   }
 }
